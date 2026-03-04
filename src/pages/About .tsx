@@ -13,12 +13,23 @@ import {
   FaArrowRight
 } from 'react-icons/fa';
 
-// --- Mixed Playlist (YouTube + MP4) ---
+// --- Mixed Playlist (Only New YouTube Video + MP4s) ---
 const CAMPUS_VIDEOS = [
-  "https://youtu.be/1J3ImpkUkto?si=tH1naSgn7vv6XqfX", // YouTube Link
-  "https://youtu.be/pJTj9hinSFI?si=VW2o1jvnQbujBGAQ", 
-  "https://assets.mixkit.co/videos/preview/mixkit-business-people-meeting-in-a-modern-office-4919-large.mp4",
-  "https://assets.mixkit.co/videos/preview/mixkit-students-walking-in-university-hallway-4796-large.mp4"
+  { 
+    url: "https://youtu.be/6GQRb4fGvtk?si=YOUR_SI_CODE", 
+    type: "youtube",
+    duration: 180 // Duration in seconds (3 minutes for example - adjust based on actual video length)
+  },
+  { 
+    url: "https://assets.mixkit.co/videos/preview/mixkit-business-people-meeting-in-a-modern-office-4919-large.mp4", 
+    type: "mp4",
+    duration: 30 // Duration in seconds
+  },
+  { 
+    url: "https://assets.mixkit.co/videos/preview/mixkit-students-walking-in-university-hallway-4796-large.mp4", 
+    type: "mp4",
+    duration: 45 // Duration in seconds
+  }
 ];
 
 // --- Gallery Items with Indian Students in Classroom Settings ---
@@ -72,8 +83,11 @@ export default function About() {
   // --- Video State ---
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
+  // const [isPlaying, setIsPlaying] = useState(true);
+  const [videoProgress, setVideoProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
-
+  const youtubeIframeRef = useRef<HTMLIFrameElement>(null);
+  const progressIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   // --- Scroll Reveal Effect ---
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -84,18 +98,89 @@ export default function About() {
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    const elements = document.querySelectorAll('.reveal');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
   }, []);
 
-  // --- Auto-shuffle Video ---
+  // --- Handle Video End and Progress for MP4 ---
   useEffect(() => {
-    const interval = setInterval(() => {
+    const videoElement = videoRef.current;
+    
+    const handleVideoEnd = () => {
+      // Move to next video when current one ends
       setCurrentVideoIndex((prev) => (prev + 1) % CAMPUS_VIDEOS.length);
-    }, 8000); // Switch every 8s
-    return () => clearInterval(interval);
+    };
+
+    const handleTimeUpdate = () => {
+      if (videoElement) {
+        const progress = (videoElement.currentTime / videoElement.duration) * 100;
+        setVideoProgress(progress);
+      }
+    };
+
+    if (videoElement) {
+      videoElement.addEventListener('ended', handleVideoEnd);
+      videoElement.addEventListener('timeupdate', handleTimeUpdate);
+    }
+
+    return () => {
+      if (videoElement) {
+        videoElement.removeEventListener('ended', handleVideoEnd);
+        videoElement.removeEventListener('timeupdate', handleTimeUpdate);
+      }
+    };
+  }, [currentVideoIndex]);
+
+  // --- Handle YouTube Video End (using timer based on duration) ---
+  useEffect(() => {
+    // Clear any existing interval
+    if (progressIntervalRef.current) {
+      clearInterval(progressIntervalRef.current);
+      progressIntervalRef.current = null;
+    }
+
+    const currentVideo = CAMPUS_VIDEOS[currentVideoIndex];
+    
+    // For YouTube videos, we need to simulate progress and end
+    if (currentVideo.type === 'youtube') {
+      let elapsedSeconds = 0;
+      const totalSeconds = currentVideo.duration;
+      
+      const interval = setInterval(() => {
+        elapsedSeconds += 1;
+        
+        // Update progress
+        const progress = (elapsedSeconds / totalSeconds) * 100;
+        setVideoProgress(progress);
+        
+        // Check if video should end
+        if (elapsedSeconds >= totalSeconds) {
+          clearInterval(interval);
+          setCurrentVideoIndex((prev) => (prev + 1) % CAMPUS_VIDEOS.length);
+        }
+      }, 1000);
+      
+      progressIntervalRef.current = interval;
+    } else {
+      // Reset progress for MP4 videos
+      
+    }
+
+    return () => {
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
+        progressIntervalRef.current = null;
+      }
+    };
   }, [currentVideoIndex]);
 
   const handleNextVideo = () => {
+    // Reset progress and move to next video
+    setVideoProgress(0);
     setCurrentVideoIndex((prev) => (prev + 1) % CAMPUS_VIDEOS.length);
   };
 
@@ -104,9 +189,26 @@ export default function About() {
     setIsMuted(!isMuted);
   };
 
-  // Determine current video type
-  const currentVideoUrl = CAMPUS_VIDEOS[currentVideoIndex];
-  const youtubeID = getYouTubeID(currentVideoUrl);
+  // const togglePlay = () => {
+  //   const newIsPlaying = !isPlaying;
+  //   setIsPlaying(newIsPlaying);
+    
+  //   const currentVideo = CAMPUS_VIDEOS[currentVideoIndex];
+    
+  //   if (currentVideo.type === 'mp4' && videoRef.current) {
+  //     if (newIsPlaying) {
+  //       videoRef.current.play().catch(error => {
+  //         console.error('Error playing video:', error);
+  //       });
+  //     } else {
+  //       videoRef.current.pause();
+  //     }
+  //   }
+  // };
+
+  // Determine current video
+  const currentVideo = CAMPUS_VIDEOS[currentVideoIndex];
+  const youtubeID = currentVideo.type === 'youtube' ? getYouTubeID(currentVideo.url) : null;
 
   return (
     <div className="bg-slate-50 min-h-screen font-sans overflow-x-hidden selection:bg-[#f47529] selection:text-white">
@@ -119,6 +221,11 @@ export default function About() {
         }
         .animate-fade-in {
           animation: fadeIn 1s ease-out forwards;
+        }
+        
+        @keyframes progressShrink {
+          from { width: 100%; }
+          to { width: 0%; }
         }
       `}</style>
 
@@ -190,7 +297,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 3. VIDEO SECTION (YouTube & MP4 Supported) */}
+      {/* 3. VIDEO SECTION - Now playing full videos */}
       <section className="py-24 px-6 relative bg-slate-900 text-white overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -207,24 +314,32 @@ From interactive classrooms to career-focused events, life at Master Minds is de
             {/* Conditional Rendering: YouTube vs MP4 */}
             {youtubeID ? (
               <iframe
-                key={youtubeID} // Force re-render on change
-                src={`https://www.youtube.com/embed/${youtubeID}?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&loop=1&playlist=${youtubeID}`}
+                key={youtubeID}
+                ref={youtubeIframeRef}
+                src={`https://www.youtube.com/embed/${youtubeID}?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&loop=0&rel=0&modestbranding=1`}
                 className="w-full h-full object-cover animate-fade-in"
                 allow="autoplay; encrypted-media"
-                title="Campus Video"
+                title="Master Minds Campus Video"
               />
             ) : (
               <video
-                key={currentVideoUrl}
+                key={currentVideo.url}
                 ref={videoRef}
-                src={currentVideoUrl}
+                src={currentVideo.url}
                 className="w-full h-full object-cover animate-fade-in"
                 autoPlay
                 muted={isMuted}
-                loop
                 playsInline
               />
             )}
+
+            {/* Progress Bar */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-white/20 z-30">
+              <div 
+                className="h-full bg-[#f47529] transition-all duration-300"
+                style={{ width: `${videoProgress}%` }}
+              ></div>
+            </div>
 
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10 pointer-events-none"></div>
@@ -240,12 +355,19 @@ From interactive classrooms to career-focused events, life at Master Minds is de
               </span>
             </div>
 
+            {/* Video Duration Indicator */}
+            <div className="absolute top-8 right-8 z-10">
+              <span className="text-xs font-bold text-white/90 bg-black/30 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                {currentVideo.type === 'youtube' ? 'Featured Video' : `Campus Clip ${currentVideoIndex}`}
+              </span>
+            </div>
+
             {/* Controls */}
             <div className="absolute bottom-0 left-0 w-full p-8 flex justify-between items-end z-20">
               <div className="text-left">
                 <span className="bg-[#f47529] px-3 py-1 text-xs font-bold rounded uppercase text-white inline-block mb-2">Now Playing</span>
                 <h3 className="text-2xl font-bold text-white drop-shadow-md">
-                  {youtubeID ? "Featured YouTube Event" : "Campus Moments"}
+                  {currentVideoIndex === 0 ? "Master Minds Campus Life" : "Campus Moments"}
                 </h3>
               </div>
               <div className="flex gap-4">
@@ -261,7 +383,7 @@ From interactive classrooms to career-focused events, life at Master Minds is de
         </div>
       </section>
 
-      {/* 4. GALLERY SECTION - Updated with Indian Students Images */}
+      {/* 4. GALLERY SECTION */}
       <section className="py-24 px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           
@@ -276,13 +398,12 @@ From interactive classrooms to career-focused events, life at Master Minds is de
                 Explore the vibrant moments that define life at Master Mind Learning Solutions. From interactive classroom sessions and technical workshops to project presentations and career development programs, our campus reflects a culture of learning, collaboration, and growth with Indian students at the heart of it all.
               </p>
             </div>
-            {/* Optional 'View All' Button */}
             <button className="hidden md:flex items-center gap-2 text-slate-600 font-bold hover:text-[#f47529] transition-colors mt-6 md:mt-0">
               View All Photos <FaArrowRight className="text-sm"/>
             </button>
           </div>
 
-          {/* Bento Grid - All images now show Indian students in classroom settings */}
+          {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[250px] gap-6">
             {GALLERY_ITEMS.map((item, i) => (
               <div 
@@ -290,24 +411,20 @@ From interactive classrooms to career-focused events, life at Master Minds is de
                 className={`group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 ${item.size} reveal opacity-0 translate-y-10`}
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
-                {/* Image - All showing Indian students */}
                 <img 
                   src={item.src} 
                   alt={item.title} 
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
                 />
                 
-                {/* Overlay Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
 
-                {/* Top Right: Like Button */}
                 <div className="absolute top-4 right-4 translate-y-[-20px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                   <button className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white hover:text-red-500 transition-colors">
                     <FaHeart />
                   </button>
                 </div>
 
-                {/* Bottom Content */}
                 <div className="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                   <span className="inline-block px-3 py-1 bg-[#f47529] text-white text-[10px] font-bold uppercase tracking-wider rounded-md mb-2">
                     {item.category}
@@ -328,7 +445,6 @@ From interactive classrooms to career-focused events, life at Master Minds is de
             ))}
           </div>
 
-          {/* Mobile 'View All' Button */}
           <div className="mt-8 text-center md:hidden">
              <button className="px-8 py-3 bg-white border border-slate-200 text-slate-700 font-bold rounded-xl shadow-sm">
                 View All Photos
@@ -337,9 +453,6 @@ From interactive classrooms to career-focused events, life at Master Minds is de
 
         </div>
       </section>
-
-      {/* 5. TEAM / MENTORS SECTION - COMPLETELY REMOVED as requested */}
-
     </div>
   );
 }

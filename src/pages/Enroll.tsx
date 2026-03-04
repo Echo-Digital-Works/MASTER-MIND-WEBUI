@@ -13,8 +13,9 @@ const confettiCSS = [...Array(20)].map((_, i) => `
   }
 `).join('');
 
-// Company WhatsApp number (format: country code + number without +)
-const COMPANY_WHATSAPP = "917676809008"; // Replace with your actual number
+// Company WhatsApp number - IMPORTANT: Remove the + sign and spaces for the URL
+const COMPANY_WHATSAPP = "919384936929"; // Without +, spaces, or special characters
+ 
 
 // --- PROPS INTERFACE ---
 interface EnrollmentModalProps {
@@ -25,6 +26,7 @@ interface EnrollmentModalProps {
 const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) => {
   const [showCelebration, setShowCelebration] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   
   const [formData, setFormData] = useState({
     fullName: '',
@@ -35,29 +37,48 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear any previous error when user starts typing
+    if (submitError) setSubmitError(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
 
     try {
+      // Validate phone number
+      if (!formData.phone || formData.phone.trim() === '') {
+        throw new Error('Phone number is required');
+      }
+
       // Get course display name
       const courseDisplay = formData.course === 'AWS' ? 'AWS Cloud Engineering' :
                            formData.course === 'DataScience' ? 'Data Science Professional' :
                            formData.course === 'FullStack' ? 'Full Stack Development' : formData.course;
 
-      // Format the WhatsApp message
-      const message = `*New Enrollment Application*%0A%0A` +
-        `*Student Details:*%0A` +
-        `👤 *Name:* ${formData.fullName}%0A` +
-        `📧 *Email:* ${formData.email}%0A` +
-        `📞 *Phone:* ${formData.phone}%0A` +
-        `📚 *Course:* ${courseDisplay}%0A` +
-        `🕐 *Applied:* ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`;
+      // Format the WhatsApp message - using proper encoding
+      const message = `*New Enrollment Application*\n\n` +
+        `*Student Details:*\n` +
+        ` *Name:* ${formData.fullName}\n` +
+        ` *Email:* ${formData.email}\n` +
+        `*Phone:* ${formData.phone}\n` +
+        ` *Course:* ${courseDisplay}\n` +
+        ` *Applied:* ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`;
 
-      // Create WhatsApp URL and open in new tab
-      const whatsappUrl = `https://wa.me/${COMPANY_WHATSAPP}?text=${message}`;
+      // Properly encode the message for URL
+      const encodedMessage = encodeURIComponent(message);
+      
+      // Create WhatsApp URL with proper format
+      // Option 1: Using wa.me (recommended - cleaner URLs)
+      const whatsappUrl = `https://wa.me/${COMPANY_WHATSAPP}?text=${encodedMessage}`;
+      
+      // Option 2: Alternative using api.whatsapp.com (if wa.me doesn't work)
+      // const whatsappUrl = `https://api.whatsapp.com/send?phone=${COMPANY_WHATSAPP}&text=${encodedMessage}`;
+
+      console.log('Opening WhatsApp URL:', whatsappUrl); // For debugging
+      
+      // Open in new tab
       window.open(whatsappUrl, '_blank');
 
       // Show celebration
@@ -65,8 +86,8 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
       console.log("Form Submitted:", formData);
 
     } catch (error) {
-      console.error('Error sending WhatsApp message:', error);
-      alert('There was an error submitting your application. Please try again or contact support directly.');
+      console.error('Error:', error);
+      setSubmitError(error instanceof Error ? error.message : 'Failed to open WhatsApp. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -75,6 +96,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
   const handleCloseEverything = () => {
     setShowCelebration(false);
     setFormData({ fullName: '', email: '', phone: '', course: '' }); 
+    setSubmitError(null);
     onClose(); 
   };
 
@@ -151,6 +173,13 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
                 <h1 className="text-3xl font-black text-slate-900 mt-2 tracking-tighter uppercase">Apply Now</h1>
                 <div className="w-10 h-1.5 bg-[#008bdc] mx-auto mt-3 rounded-full"></div>
             </div>
+
+            {/* Error message display */}
+            {submitError && (
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm">
+                {submitError}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="relative group">
@@ -246,7 +275,7 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
             <p className="text-center text-[10px] font-bold text-slate-400 mt-8 uppercase tracking-widest">
                 Need help?{' '}
                 <a 
-                    href={`https://wa.me/${COMPANY_WHATSAPP}?text=Hi%2C%20I%20need%20help%20with%20enrollment`}
+                    href={`https://wa.me/${COMPANY_WHATSAPP}?text=${encodeURIComponent('Hi, I need help with enrollment')}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#f47529] hover:underline"
