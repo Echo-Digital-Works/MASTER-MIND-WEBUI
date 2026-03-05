@@ -131,10 +131,21 @@ const Footer: React.FC = () => {
 
       </div>
       
-      {/* Bottom Copyright Bar */}
-      <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-200 text-center text-gray-400 text-sm">
-        <p>© {new Date().getFullYear()} Master Mind Learning Solutions. All rights reserved.</p>
-
+      {/* Bottom Copyright Bar with Developer Credit */}
+      <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-200">
+        <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+          <p>© {new Date().getFullYear()} Master Mind Learning Solutions. All rights reserved.</p>
+          <p className="mt-2 md:mt-0">
+            Developed by{' '}
+            <a 
+              href="https://echodigitalworks.in" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-[#008bdc] hover:text-[#f27324] transition-colors font-medium"
+            > Echo Digital Works
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
