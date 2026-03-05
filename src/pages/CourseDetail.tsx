@@ -33,7 +33,7 @@ export default function CourseDetail() {
   });
 
   // Company WhatsApp number (replace with your actual number)
-  const COMPANY_WHATSAPP = "917676809008"; // Format: country code + number without +
+  const COMPANY_WHATSAPP = "+91 93849 36929"; // Format: country code + number without +
 
   // Comprehensive course database with all new courses and specific images
   const courseDatabase = {
