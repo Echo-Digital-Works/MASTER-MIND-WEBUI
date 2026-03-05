@@ -22,7 +22,7 @@ import {
   FaWhatsapp
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
+import images from '../assets/foundar image.jpeg';
 // --- Success Stories Data (Indian Names and Companies) ---
 const SUCCESS_STORIES = [
   { 
@@ -120,6 +120,9 @@ const CAMPUS_IMAGES = [
     desc: "Direct interviews with top Indian companies"
   }
 ];
+
+// Founder image URL - Updated with Nisha Mahesh's image from your files
+
 
 // Company WhatsApp number
 const COMPANY_WHATSAPP = "917676809008";
@@ -585,14 +588,14 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* --- 3. FOUNDER with Indian female photo and custom signature --- */}
+        {/* --- 3. FOUNDER with Nisha Mahesh photo and custom signature --- */}
         <section className="py-12 md:py-16 px-4 md:px-6 reveal">
           <div className="max-w-5xl mx-auto bg-white/80 backdrop-blur-xl rounded-xl md:rounded-2xl shadow-xl border border-white/60 overflow-hidden hover:shadow-2xl transition-shadow duration-500">
             <div className="flex flex-col lg:flex-row min-h-auto lg:min-h-[400px]">
               <div className="w-full lg:w-2/5 relative h-[250px] sm:h-[300px] lg:h-auto group">
-                {/* Indian Female Founder Image - Updated with professional Indian businesswoman */}
+                {/* Nisha Mahesh Founder Image - Using the provided image */}
                 <img 
-                  src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  src={images}
                   alt="Nisha Mahesh - Founder" 
                   className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700" 
                 />
@@ -843,10 +846,9 @@ export default function LandingPage() {
 
                 {/* Header with paper plane icon */}
                 <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                  <span className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-100 text-[#0078d4] flex items-center justify-center text-sm group-hover:rotate-12 transition-transform">
+                  <span className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-100 text-[#0078d4] flex items-center justify-center">
                     <FaPaperPlane />
                   </span>
-                
                 </h3>
 
                 {/* Success Message */}
