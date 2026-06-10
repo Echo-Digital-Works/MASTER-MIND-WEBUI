@@ -36,9 +36,9 @@ const Contact: React.FC = () => {
           
           {/* Quick Contact Cards */}
           {[
-            { icon: <HiOutlinePhone />, label: "Call Us", val: "+91 76768 09008", link: "tel:+917676809008", color: "text-blue-500", bg: "bg-blue-50" },
+            { icon: <HiOutlinePhone />, label: "Call Us", val: "+91 79040 75373", link: "tel:+917904075373", color: "text-blue-500", bg: "bg-blue-50" },
             { icon: <HiOutlineMail />, label: "Email Support", val: "blrelectroniccity@gmail.com", link: "mailto:blrelectroniccity@gmail.com", color: "text-[#f27324]", bg: "bg-orange-50" },
-            { icon: <FaWhatsapp />, label: "WhatsApp", val: "Chat with us", link: "https://wa.me/917676809008?partnertoken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJodHRwczovL3dhLm1lLzkxNzY3NjgwOTAwOCIsImlzcyI6Ikdvb2dsZSIsImV4cCI6MTc3MTUxNTM5MywiaWF0IjoxNzcxNTE1MDkzfQ.2ROgr6gPABhUy_LdE0H4GtfyoLYQuokoQahV40NCVwwuxIEytUtzLRCMNLFtEySMz57Pm0RgIE7FhP5XZxbpAg", color: "text-green-500", bg: "bg-green-50" },
+            { icon: <FaWhatsapp />, label: "WhatsApp", val: "Chat with us", link: "https://wa.me/917904075373", color: "text-green-500", bg: "bg-green-50" },
             { icon: <HiOutlineClock />, label: "Working Hours", val: "Mon - Sat: 9 AM - 7 PM", color: "text-purple-500", bg: "bg-purple-50" }
           ].map((item, i) => (
             <div key={i} className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-md transition-all group flex items-center gap-5">
@@ -188,7 +188,7 @@ const Contact: React.FC = () => {
            <div className="flex flex-wrap justify-center gap-4">
               {[
                 { icon: <FaInstagram />, label: "Instagram", link: "https://www.instagram.com/master_mind_learning_solutions/", color: "hover:bg-pink-500" },
-                { icon: <FaWhatsapp />, label: "WhatsApp", link: "https://wa.me/917676809008?partnertoken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJodHRwczovL3dhLm1lLzkxNzY3NjgwOTAwOCIsImlzcyI6Ikdvb2dsZSIsImV4cCI6MTc3MTUxNTM5MywiaWF0IjoxNzcxNTE1MDkzfQ.2ROgr6gPABhUy_LdE0H4GtfyoLYQuokoQahV40NCVwwuxIEytUtzLRCMNLFtEySMz57Pm0RgIE7FhP5XZxbpAg", color: "hover:bg-green-600" },
+                { icon: <FaWhatsapp />, label: "WhatsApp", link: "https://wa.me/917904075373", color: "hover:bg-green-600" },
                 { icon: <FaLinkedinIn />, label: "LinkedIn", link: "https://www.linkedin.com", color: "hover:bg-blue-700" },
                 { icon: <FaTwitter />, label: "Twitter", link: "https://twitter.com", color: "hover:bg-sky-500" },
                 { icon: <FaYoutube />, label: "YouTube", link: "https://www.youtube.com", color: "hover:bg-red-600" }

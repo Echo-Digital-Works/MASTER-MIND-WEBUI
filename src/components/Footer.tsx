@@ -61,7 +61,7 @@ const Footer: React.FC = () => {
                 <FaYoutube />
               </a>
               <a 
-                href="https://wa.me/917676809008?partnertoken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJodHRwczovL3dhLm1lLzkxNzY3NjgwOTAwOCIsImlzcyI6Ikdvb2dsZSIsImV4cCI6MTc3MTUxNTM5MywiaWF0IjoxNzcxNTE1MDkzfQ.2ROgr6gPABhUy_LdE0H4GtfyoLYQuokoQahV40NCVwwuxIEytUtzLRCMNLFtEySMz57Pm0RgIE7FhP5XZxbpAg"
+                href="https://wa.me/917904075373"
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="cursor-pointer hover:text-[#25D366] transition-colors"
@@ -89,6 +89,8 @@ const Footer: React.FC = () => {
           <ul className="flex flex-col space-y-4 text-gray-500 text-sm list-none p-0 m-0">
             <li className="hover:text-[#008bdc] cursor-pointer transition-colors">AWS</li>
             <li className="hover:text-[#008bdc] cursor-pointer transition-colors">Data Science</li>
+            <li className="hover:text-[#008bdc] cursor-pointer transition-colors">Full Stack with AI</li>
+            <li className="hover:text-[#008bdc] cursor-pointer transition-colors">Networking</li>
           </ul>
         </div>
 
@@ -102,12 +104,12 @@ const Footer: React.FC = () => {
             </div>
             <div className="flex gap-3 items-center">
               <HiOutlinePhone className="text-gray-400 text-xl shrink-0" />
-              <a href="tel:+917676809008" className="hover:text-[#008bdc] transition-colors">+91 76768 09008</a>
+              <a href="tel:+917904075373" className="hover:text-[#008bdc] transition-colors">+91 79040 75373</a>
             </div>
             <div className="flex gap-3 items-center">
               <FaWhatsapp className="text-gray-400 text-xl shrink-0" />
               <a 
-                href="https://wa.me/917676809008?partnertoken=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJodHRwczovL3dhLm1lLzkxNzY3NjgwOTAwOCIsImlzcyI6Ikdvb2dsZSIsImV4cCI6MTc3MTUxNTM5MywiaWF0IjoxNzcxNTE1MDkzfQ.2ROgr6gPABhUy_LdE0H4GtfyoLYQuokoQahV40NCVwwuxIEytUtzLRCMNLFtEySMz57Pm0RgIE7FhP5XZxbpAg"
+                href="https://wa.me/917904075373"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#25D366] transition-colors"

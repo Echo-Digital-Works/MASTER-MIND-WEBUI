@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { 
-  FaCode, 
-  FaCloud, 
-  FaDatabase, 
-  FaChalkboardTeacher, 
-  FaHandshake, 
-  FaRocket, 
+import {
+  FaCode,
+  FaCloud,
+  FaDatabase,
+  FaChalkboardTeacher,
+  FaHandshake,
+  FaRocket,
   FaQuoteLeft,
   FaPhoneAlt,
   FaEnvelope,
@@ -13,9 +13,9 @@ import {
   FaArrowRight,
   FaMicrosoft,
   FaLaptopCode,
-  FaUserGraduate, 
-  FaBriefcase, 
-  FaAward, 
+  FaUserGraduate,
+  FaBriefcase,
+  FaAward,
   FaBuilding,
   FaPaperPlane,
   FaMapMarkedAlt,
@@ -25,75 +25,73 @@ import { Link } from 'react-router-dom';
 import images from '../assets/foundar image.jpeg';
 // --- Success Stories Data (Indian Names and Companies) ---
 const SUCCESS_STORIES = [
-  { 
-    name: "Priya Sharma", role: ".NET Developer", co: "Infosys", 
+  {
+    name: "Priya Sharma", role: ".NET Developer", co: "Infosys",
     accentColor: "text-blue-600", bgColor: "bg-blue-50", icon: <FaMicrosoft />,
-    quote: "I had a career gap of 3 years. The mock interviews and C# deep dive gave me the confidence to crack the Infosys interview." 
+    quote: "I had a career gap of 3 years. The mock interviews and C# deep dive gave me the confidence to crack the Infosys interview."
   },
-  { 
-    name: "Rajesh Kumar", role: "Cloud Architect", co: "TCS", 
+  {
+    name: "Rajesh Kumar", role: "Cloud Architect", co: "TCS",
     accentColor: "text-orange-500", bgColor: "bg-orange-50", icon: <FaCloud />,
-    quote: "The hands-on labs were a game changer. I wasn't just watching videos; I was building real infrastructure on AWS." 
+    quote: "The hands-on labs were a game changer. I wasn't just watching videos; I was building real infrastructure on AWS."
   },
-  { 
-    name: "Anjali Desai", role: "Data Analyst", co: "Deloitte", 
+  {
+    name: "Anjali Desai", role: "Data Analyst", co: "CodeTez",
     accentColor: "text-purple-600", bgColor: "bg-purple-50", icon: <FaDatabase />,
-    quote: "Coming from a non-tech background, the mentorship was crucial. They started from scratch and built me up step by step." 
+    quote: "Coming from a non-tech background, the mentorship was crucial. They started from scratch and built me up step by step."
   },
-  { 
-    name: "Vikram Mehta", role: "Software Engineer", co: "Microsoft", 
+  {
+    name: "Vikram Mehta", role: "Software Engineer", co: "Ninos",
     accentColor: "text-indigo-600", bgColor: "bg-indigo-50", icon: <FaCode />,
-    quote: "The focus on Clean Architecture and Design Patterns set this course apart. I use what I learned every single day at work." 
+    quote: "The focus on Clean Architecture and Design Patterns set this course apart. I use what I learned every single day at work."
   },
-  { 
-    name: "Rahul Verma", role: "Backend Dev", co: "Zoho", 
+  {
+    name: "Rahul Verma", role: "Backend Dev", co: "Zoho",
     accentColor: "text-green-600", bgColor: "bg-green-50", icon: <FaDatabase />,
-    quote: "Best decision of my life. The placement team didn't rest until I had an offer letter in hand. Truly grateful." 
+    quote: "Best decision of my life. The placement team didn't rest until I had an offer letter in hand. Truly grateful."
   },
-  { 
-    name: "Anita Raj", role: "Full Stack Dev", co: "TCS", 
+  {
+    name: "Anita Raj", role: "Full Stack Dev", co: "TCS",
     accentColor: "text-pink-600", bgColor: "bg-pink-50", icon: <FaRocket />,
-    quote: "A perfect blend of theory and practice. The C# module is world-class and the projects look great on a resume." 
+    quote: "A perfect blend of theory and practice. The C# module is world-class and the projects look great on a resume."
+  },
+  {
+    name: "Siddharth Sen", role: "UI/UX Designer", co: "Echo Digital",
+    accentColor: "text-orange-600", bgColor: "bg-orange-50", icon: <FaLaptopCode />,
+    quote: "The frontend training and design concepts taught here directly helped me land my UI/UX designer role at Echo Digital Works."
+  },
+  {
+    name: "Karan Malhotra", role: "Automation Tester", co: "HCL",
+    accentColor: "text-cyan-600", bgColor: "bg-cyan-50", icon: <FaAward />,
+    quote: "The manual and automation testing modules were extremely structured. The mock interviews were key to cracking my HCL interview."
   }
 ];
 
 // --- Courses Data (Updated Specialized Tracks) ---
 const COURSES = [
-  { 
-    id: 1, title: "Cloud Computing", desc: "Master AWS, Azure, and Google Cloud infrastructure and deployments.", 
+  {
+    id: 1, title: "Cloud Computing", desc: "Master AWS, Azure, and Google Cloud infrastructure and deployments.",
     icon: <FaCloud />, color: "text-blue-500", bg: "bg-blue-50", border: "group-hover:border-blue-200", btn: "text-blue-500"
   },
-  { 
-    id: 2, title: "Manual/Auto Testing", desc: "Learn QA fundamentals, Selenium, Cypress, and robust automation frameworks.", 
+  {
+    id: 2, title: "Manual/Auto Testing", desc: "Learn QA fundamentals, Selenium, Cypress, and robust automation frameworks.",
     icon: <FaCheckCircle />, color: "text-green-500", bg: "bg-green-50", border: "group-hover:border-green-200", btn: "text-green-500"
   },
-  { 
-    id: 3, title: "Data Analytics", desc: "Extract actionable insights using Python, SQL, PowerBI, and Tableau.", 
+  {
+    id: 3, title: "Data Analytics", desc: "Extract actionable insights using Python, SQL, PowerBI, and Tableau.",
     icon: <FaDatabase />, color: "text-purple-600", bg: "bg-purple-50", border: "group-hover:border-purple-200", btn: "text-purple-600"
   },
-  { 
-    id: 4, title: "Full Stack", desc: "End-to-end web development with modern frontend and backend frameworks.", 
+  {
+    id: 4, title: "Full Stack with AI Development", desc: "End-to-end web development with modern frontend and backend frameworks.",
     icon: <FaLaptopCode />, color: "text-indigo-500", bg: "bg-indigo-50", border: "group-hover:border-indigo-200", btn: "text-indigo-500"
   },
-  { 
-    id: 5, title: "Networking", desc: "Master network architecture, routing, switching, and security fundamentals.", 
-    icon: <FaCode />, color: "text-red-500", bg: "bg-red-50", border: "group-hover:border-red-200", btn: "text-red-500" 
+  {
+    id: 5, title: "Networking", desc: "Master network architecture, routing, switching, and security fundamentals.",
+    icon: <FaCode />, color: "text-red-500", bg: "bg-red-50", border: "group-hover:border-red-200", btn: "text-red-500"
   },
-  { 
-    id: 6, title: "Scrum Master", desc: "Lead teams effectively with Agile methodologies and sprint planning.", 
+  {
+    id: 6, title: "Scrum Master", desc: "Lead teams effectively with Agile methodologies and sprint planning.",
     icon: <FaHandshake />, color: "text-orange-500", bg: "bg-orange-50", border: "group-hover:border-orange-200", btn: "text-orange-500"
-  },
-  { 
-    id: 7, title: "SAP", desc: "Gain expertise in enterprise resource planning and core business operations.", 
-    icon: <FaBuilding />, color: "text-cyan-600", bg: "bg-cyan-50", border: "group-hover:border-cyan-200", btn: "text-cyan-600"
-  },
-  { 
-    id: 8, title: "CADD", desc: "Professional computer-aided design and drafting for modern engineering.", 
-    icon: <FaChalkboardTeacher />, color: "text-teal-600", bg: "bg-teal-50", border: "group-hover:border-teal-200", btn: "text-teal-600"
-  },
-  { 
-    id: 9, title: "Tally", desc: "Master accounting, inventory management, and financial compliance.", 
-    icon: <FaAward />, color: "text-pink-600", bg: "bg-pink-50", border: "group-hover:border-pink-200", btn: "text-pink-600"
   }
 ];
 
@@ -125,13 +123,20 @@ const CAMPUS_IMAGES = [
 
 
 // Company WhatsApp number
-const COMPANY_WHATSAPP = "917676809008";
+const COMPANY_WHATSAPP = "917904075373";
+
+const HERO_IMAGES = [
+  "/home-image1.png",
+  "/home-image2.png",
+  "/home-image3.png"
+];
 
 export default function LandingPage() {
-  
+
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [currentCourseIndex, setCurrentCourseIndex] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentHeroImageIndex, setCurrentHeroImageIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -141,7 +146,7 @@ export default function LandingPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
-  
+
   // --- Effects ---
   useEffect(() => {
     // 1. Scroll Reveal with improved threshold
@@ -169,7 +174,7 @@ export default function LandingPage() {
         setCurrentStoryIndex((prev) => (prev + 3) >= SUCCESS_STORIES.length ? 0 : prev + 3);
         setCurrentCourseIndex((prev) => (prev + 3) >= COURSES.length ? 0 : prev + 3);
       }
-    }, 4000); 
+    }, 4000);
 
     // 3. Image Slider Timer
     const imageInterval = setInterval(() => {
@@ -178,11 +183,19 @@ export default function LandingPage() {
       }
     }, 3000);
 
+    // 4. Hero Image Slider Timer
+    const heroImageInterval = setInterval(() => {
+      if (!isHovering) {
+        setCurrentHeroImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
+      }
+    }, 4000);
+
     return () => {
       clearInterval(interval);
       clearInterval(imageInterval);
+      clearInterval(heroImageInterval);
     };
-  }, [isHovering]); 
+  }, [isHovering]);
 
   // Handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -201,14 +214,11 @@ export default function LandingPage() {
     try {
       // Get course display name
       const courseDisplay = formData.course === 'cloud' ? 'Cloud Computing' :
-                           formData.course === 'testing' ? 'Manual/Automation Testing' :
-                           formData.course === 'data' ? 'Data Analytics' :
-                           formData.course === 'fullstack' ? 'Full Stack Development' :
-                           formData.course === 'networking' ? 'Networking' :
-                           formData.course === 'scrum' ? 'Scrum Master' :
-                           formData.course === 'sap' ? 'SAP' :
-                           formData.course === 'cadd' ? 'CADD' :
-                           formData.course === 'tally' ? 'Tally' : 'Not selected';
+        formData.course === 'testing' ? 'Manual/Automation Testing' :
+          formData.course === 'data' ? 'Data Analytics' :
+            formData.course === 'fullstack' ? 'Full Stack Development' :
+              formData.course === 'networking' ? 'Networking' :
+                formData.course === 'scrum' ? 'Scrum Master' : 'Not selected';
 
       // Format the WhatsApp message
       const message = `*New Enrollment Application*%0A%0A` +
@@ -225,7 +235,7 @@ export default function LandingPage() {
 
       // Show thank you message
       setShowThankYou(true);
-      
+
       // Reset form after 3 seconds
       setTimeout(() => {
         setShowThankYou(false);
@@ -259,7 +269,7 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen font-sans selection:bg-[#0078d4] selection:text-white">
-      
+
       {/* --- STYLES --- */}
       <style>{`
         /* FIXED SCROLLING ISSUES */
@@ -422,19 +432,10 @@ export default function LandingPage() {
         .animate-bounce-slow { animation: bounceSlow 3s infinite ease-in-out; }
       `}</style>
 
-      {/* --- SINGLE NAVBAR (MasterMinds only) --- */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Navbar content can go here */}
-          </div>
-        </div>
-      </nav>
-
       {/* Add padding-top to account for fixed navbar */}
-      <div className="pt-16">
+      <div className="pt-0">
         {/* --- 1. HERO with enhanced animations (Updated Padding) --- */}
-        <section className="relative w-full pt-12 pb-16 md:pt-16 md:pb-24 lg:pt-20 lg:pb-32 px-4 md:px-6 overflow-hidden">
+        <section className="relative w-full pt-4 pb-16 md:pt-6 md:pb-24 lg:pt-8 lg:pb-32 px-4 md:px-6 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50 opacity-30"></div>
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
             <div className="space-y-6 md:space-y-8 text-center lg:text-left reveal stagger-child">
@@ -443,20 +444,20 @@ export default function LandingPage() {
                 New Batch Starts Nov 24
               </div>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] tracking-tight drop-shadow-sm stagger-child">
-                Architect Your <br className="hidden md:block"/>
+                Architect Your <br className="hidden md:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0078d4] to-[#00bcf2] animate-float inline-block">Future in Tech.</span>
               </h1>
               <p className="text-base md:text-lg text-slate-700 font-medium leading-relaxed max-w-lg mx-auto lg:mx-0 stagger-child">
                 Master <strong>C# .NET</strong>, Cloud Architecture, and Enterprise Development. We don't just teach coding; we build industry-ready software engineers.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2 md:pt-4 justify-center lg:justify-start stagger-child">
-                <Link 
-                  to="/courses" 
+                <Link
+                  to="/courses"
                   className="w-full sm:w-auto px-6 py-4 bg-[#0078d4] text-white rounded-xl font-semibold shadow-lg shadow-blue-500/30 hover:bg-[#0063b1] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group"
                 >
                   Explore Courses <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <a 
+                <a
                   href="#success"
                   className="w-full sm:w-auto px-6 py-4 bg-white/90 text-slate-700 border border-slate-200 rounded-xl font-semibold hover:bg-white transition-all flex items-center justify-center gap-2 backdrop-blur-md shadow-sm hover:shadow-md"
                 >
@@ -466,8 +467,32 @@ export default function LandingPage() {
             </div>
             <div className="relative mt-8 lg:mt-0 animate-float">
               <div className="relative z-10 bg-slate-900/90 rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-4 shadow-2xl md:rotate-2 hover:rotate-0 transition-all duration-700 backdrop-blur-md hover:shadow-2xl">
-                <div className="bg-slate-800 rounded-[1rem] md:rounded-[1.5rem] overflow-hidden border border-slate-700">
-                  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Indian students coding" className="w-full h-[250px] sm:h-[350px] md:h-[400px] object-cover opacity-80 hover:opacity-100 transition-opacity duration-700" />
+                <div className="bg-slate-800 rounded-[1rem] md:rounded-[1.5rem] overflow-hidden border border-slate-700 relative h-[300px] sm:h-[400px] md:h-[480px] lg:h-[500px]">
+                  {HERO_IMAGES.map((imgUrl, index) => (
+                    <img
+                      key={imgUrl}
+                      src={imgUrl}
+                      alt={`Master Mind Home Slide ${index + 1}`}
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentHeroImageIndex ? 'opacity-90' : 'opacity-0'
+                        } hover:opacity-100`}
+                    />
+                  ))}
+
+                  {/* Indicators / Navigation Dots inside the image frame */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                    {HERO_IMAGES.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setCurrentHeroImageIndex(idx);
+                        }}
+                        className={`w-2.5 h-2.5 rounded-full transition-all ${idx === currentHeroImageIndex ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/80'
+                          }`}
+                        aria-label={`Go to slide ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl -z-10"></div>
@@ -490,14 +515,13 @@ export default function LandingPage() {
                 {CAMPUS_IMAGES.map((image, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${
-                      index === currentImageIndex 
-                        ? 'opacity-100 scale-100' 
-                        : 'opacity-0 scale-110'
-                    }`}
+                    className={`absolute inset-0 transition-all duration-700 ease-in-out transform ${index === currentImageIndex
+                      ? 'opacity-100 scale-100'
+                      : 'opacity-0 scale-110'
+                      }`}
                   >
-                    <img 
-                      src={image.url} 
+                    <img
+                      src={image.url}
                       alt={image.title}
                       className="w-full h-full object-cover"
                     />
@@ -511,13 +535,13 @@ export default function LandingPage() {
               </div>
 
               {/* Navigation Arrows */}
-              <button 
+              <button
                 onClick={prevImage}
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all opacity-0 group-hover:opacity-100 text-sm md:text-base"
               >
                 ←
               </button>
-              <button 
+              <button
                 onClick={nextImage}
                 className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all opacity-0 group-hover:opacity-100 text-sm md:text-base"
               >
@@ -530,11 +554,10 @@ export default function LandingPage() {
                   <button
                     key={index}
                     onClick={() => goToImage(index)}
-                    className={`transition-all duration-300 ${
-                      index === currentImageIndex 
-                        ? 'w-6 h-1.5 bg-white' 
-                        : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'
-                    } rounded-full`}
+                    className={`transition-all duration-300 ${index === currentImageIndex
+                      ? 'w-6 h-1.5 bg-white'
+                      : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'
+                      } rounded-full`}
                   />
                 ))}
               </div>
@@ -546,11 +569,10 @@ export default function LandingPage() {
                 <button
                   key={index}
                   onClick={() => goToImage(index)}
-                  className={`w-12 h-12 md:w-14 md:h-14 rounded-lg overflow-hidden transition-all duration-300 ${
-                    index === currentImageIndex 
-                      ? 'ring-2 ring-[#0078d4] scale-105' 
-                      : 'opacity-50 hover:opacity-100'
-                  }`}
+                  className={`w-12 h-12 md:w-14 md:h-14 rounded-lg overflow-hidden transition-all duration-300 ${index === currentImageIndex
+                    ? 'ring-2 ring-[#0078d4] scale-105'
+                    : 'opacity-50 hover:opacity-100'
+                    }`}
                 >
                   <img src={image.url} alt={image.title} className="w-full h-full object-cover" />
                 </button>
@@ -565,20 +587,20 @@ export default function LandingPage() {
             <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-center">
               <div className="order-2 lg:order-1 relative group">
                 <div className="w-full h-[250px] sm:h-[300px] md:h-[350px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg">
-                   <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Indian students learning" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Indian students learning" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 </div>
                 <div className="absolute -bottom-3 -right-3 w-16 h-16 bg-gradient-to-br from-[#0078d4] to-[#00bcf2] rounded-full opacity-20 blur-xl group-hover:opacity-30 transition-opacity"></div>
               </div>
               <div className="order-1 lg:order-2 space-y-3 md:space-y-4 text-center lg:text-left">
                 <h3 className="text-[#0078d4] font-bold text-xs md:text-sm tracking-widest uppercase stagger-child">Who We Are</h3>
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight stagger-child">Bridging the Gap Between <br className="hidden md:block"/> Academia & Industry</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight stagger-child">Bridging the Gap Between <br className="hidden md:block" /> Academia & Industry</h2>
                 <p className="text-slate-600 text-sm md:text-base leading-relaxed stagger-child">
                   Master Mind Learning Solutions is a career-focused training institute dedicated to empowering students with real-world technical skills. We combine academic knowledge with practical industry exposure to help learners become job-ready professionals. Our expert mentors, hands-on projects, and structured programs ensure every student gains confidence and competence.
                 </p>
                 <ul className="space-y-2 md:space-y-3 pt-3 text-left inline-block lg:block">
                   {["Curriculum designed by Microsoft MVPs", "Focus on Enterprise Architecture", "Agile Methodology Implementation"].map((item, i) => (
                     <li key={i} className="flex items-center gap-2 text-slate-700 text-sm md:text-base font-medium stagger-child">
-                      <FaCheckCircle className="text-[#0078d4] shrink-0 animate-pulse-slow text-sm" /> 
+                      <FaCheckCircle className="text-[#0078d4] shrink-0 animate-pulse-slow text-sm" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -594,10 +616,10 @@ export default function LandingPage() {
             <div className="flex flex-col lg:flex-row min-h-auto lg:min-h-[400px]">
               <div className="w-full lg:w-2/5 relative h-[250px] sm:h-[300px] lg:h-auto group">
                 {/* Nisha Mahesh Founder Image - Using the provided image */}
-                <img 
+                <img
                   src={images}
-                  alt="Nisha Mahesh - Founder" 
-                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700" 
+                  alt="Nisha Mahesh - Founder"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-[#0078d4]/10 mix-blend-multiply group-hover:bg-[#0078d4]/20 transition-all"></div>
               </div>
@@ -606,22 +628,22 @@ export default function LandingPage() {
                 <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-1">Nisha Mahesh</h3>
                 <p className="text-[#0078d4] font-bold tracking-wide uppercase text-xs md:text-sm mb-4 md:mb-6">Founder & Lead Architect</p>
                 <p className="text-slate-600 italic text-base md:text-lg leading-relaxed mb-6 md:mb-8">"A passionate entrepreneur dedicated to equipping students with industry-relevant skills, practical experience, and career guidance to help them become job-ready professionals."</p>
-                
+
                 {/* Custom Dummy Signature for Nisha Mahesh */}
                 <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
                   <svg width="120" height="50" viewBox="0 0 200 60" className="opacity-40 hover:opacity-70 transition-opacity duration-300">
-                    <path 
-                      d="M20,35 C30,25 40,20 55,25 C70,30 80,40 95,35 C110,30 120,15 135,20 C150,25 160,40 175,35" 
-                      stroke="#0078d4" 
-                      strokeWidth="2" 
-                      fill="none" 
+                    <path
+                      d="M20,35 C30,25 40,20 55,25 C70,30 80,40 95,35 C110,30 120,15 135,20 C150,25 160,40 175,35"
+                      stroke="#0078d4"
+                      strokeWidth="2"
+                      fill="none"
                       strokeLinecap="round"
                     />
-                    <path 
-                      d="M30,45 C40,40 50,38 65,42 C80,46 90,52 105,48 C120,44 130,35 145,40 C160,45 170,52 180,48" 
-                      stroke="#0078d4" 
-                      strokeWidth="1.5" 
-                      fill="none" 
+                    <path
+                      d="M30,45 C40,40 50,38 65,42 C80,46 90,52 105,48 C120,44 130,35 145,40 C160,45 170,52 180,48"
+                      stroke="#0078d4"
+                      strokeWidth="1.5"
+                      fill="none"
                       opacity="0.6"
                       strokeLinecap="round"
                     />
@@ -646,10 +668,10 @@ export default function LandingPage() {
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
               {[
-                { icon: <FaBriefcase />, num: "94%", label: "Placement Rate", sub: "Avg time: 45 days", color: "text-[#00bcf2]", bg: "bg-blue-500/10", border: "border-blue-500/20" },
-                { icon: <FaAward />, num: "12 LPA", label: "Highest Package", sub: "Avg: 6 LPA", color: "text-[#0078d4]", bg: "bg-blue-500/10", border: "border-blue-500/20" },
-                { icon: <FaBuilding />, num: "500+", label: "Hiring Partners", sub: "Startups to MNCs", color: "text-[#00bcf2]", bg: "bg-blue-500/10", border: "border-blue-500/20" },
-                { icon: <FaUserGraduate />, num: "2500+", label: "Alumni Network", sub: "Across 12 countries", color: "text-[#0078d4]", bg: "bg-blue-500/10", border: "border-blue-500/20" }
+                { icon: <FaBriefcase />, num: "90%", label: "Placement Rate", sub: "Avg time: 45 days", color: "text-[#00bcf2]", bg: "bg-blue-500/10", border: "border-blue-500/20" },
+                { icon: <FaAward />, num: "6 LPA", label: "Highest Package", sub: "Avg: 6 LPA", color: "text-[#0078d4]", bg: "bg-blue-500/10", border: "border-blue-500/20" },
+                { icon: <FaBuilding />, num: "400+", label: "Hiring Partners", sub: "Startups to MNCs", color: "text-[#00bcf2]", bg: "bg-blue-500/10", border: "border-blue-500/20" },
+                { icon: <FaUserGraduate />, num: "1000+", label: "Alumni Network", sub: "Across 12 countries", color: "text-[#0078d4]", bg: "bg-blue-500/10", border: "border-blue-500/20" }
               ].map((stat, i) => (
                 <div key={i} className={`relative group p-4 md:p-5 rounded-xl md:rounded-2xl border ${stat.border} bg-slate-800/40 backdrop-blur-sm hover:bg-slate-800/60 transition-all duration-300 hover:-translate-y-1`}>
                   <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg ${stat.bg} ${stat.color} flex items-center justify-center text-sm md:text-base mb-2 md:mb-3 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform group-hover:rotate-3`}>{stat.icon}</div>
@@ -678,21 +700,20 @@ export default function LandingPage() {
                   <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-1 md:mb-2">{course.title}</h3>
                   <p className="text-xs md:text-sm text-slate-500 mb-3 md:mb-4 leading-relaxed">{course.desc}</p>
                   <Link to={`/courses/${course.id}`} className={`${course.btn} font-bold text-xs md:text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all cursor-pointer`}>
-                    View Curriculum <FaArrowRight className="group-hover:translate-x-1 transition-transform text-xs"/>
+                    View Curriculum <FaArrowRight className="group-hover:translate-x-1 transition-transform text-xs" />
                   </Link>
                 </div>
               ))}
             </div>
             <div className="flex justify-center gap-1.5 mt-5 md:mt-6">
               {Array.from({ length: Math.ceil(COURSES.length / 3) }).map((_, idx) => (
-                <button 
-                  key={idx} 
-                  onClick={() => setCurrentCourseIndex(idx * 3)} 
-                  className={`transition-all duration-300 ${
-                    Math.floor(currentCourseIndex / 3) === idx 
-                      ? 'bg-[#0078d4] w-5 md:w-6 h-2 md:h-2.5' 
-                      : 'bg-slate-300 w-2 h-2 hover:bg-slate-400'
-                  } rounded-full`} 
+                <button
+                  key={idx}
+                  onClick={() => setCurrentCourseIndex(idx * 3)}
+                  className={`transition-all duration-300 ${Math.floor(currentCourseIndex / 3) === idx
+                    ? 'bg-[#0078d4] w-5 md:w-6 h-2 md:h-2.5'
+                    : 'bg-slate-300 w-2 h-2 hover:bg-slate-400'
+                    } rounded-full`}
                 />
               ))}
             </div>
@@ -702,13 +723,13 @@ export default function LandingPage() {
         {/* --- 6. THE ADVANTAGE with enhanced animations (Reduced Size) --- */}
         <section className="py-12 md:py-16 px-4 md:px-6 bg-slate-900/90 backdrop-blur-md text-white rounded-xl md:rounded-2xl mx-4 lg:mx-6 reveal overflow-hidden relative">
           <div className="absolute top-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-[#00bcf2]/10 rounded-full blur-[80px] -z-10 animate-pulse-slow"></div>
-          
+
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 md:mb-12 border-b border-white/10 pb-4 md:pb-5">
               <div className="text-center lg:text-left w-full lg:w-auto">
                 <h3 className="text-[#00bcf2] font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] mb-1 md:mb-2 text-xs md:text-sm">Our Secret Sauce</h3>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight">
-                  Why we are <br className="hidden sm:block"/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">different.</span>
+                  Why we are <br className="hidden sm:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">different.</span>
                 </h2>
               </div>
               <p className="text-slate-400 max-w-md mt-3 lg:mt-0 text-sm md:text-base font-medium text-center lg:text-right mx-auto lg:mx-0">
@@ -718,10 +739,10 @@ export default function LandingPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
               {[
-                { id: "01", icon: <FaChalkboardTeacher/>, title: "Live Mentorship", desc: "Learn from industry experts in real-time.", tag: "Interactive", color: "text-blue-400", border: "group-hover:border-blue-500/50" },
-                { id: "02", icon: <FaCode/>, title: "Code Reviews", desc: "Get your PRs reviewed by senior engineers.", tag: "Best Practices", color: "text-purple-400", border: "group-hover:border-purple-500/50" },
-                { id: "03", icon: <FaHandshake/>, title: "Mock Interviews", desc: "Simulate real technical rounds to prep you.", tag: "Career Prep", color: "text-blue-400", border: "group-hover:border-blue-500/50" },
-                { id: "04", icon: <FaRocket/>, title: "Capstone Projects", desc: "Build a production-ready application.", tag: "Portfolio", color: "text-green-400", border: "group-hover:border-green-500/50" }
+                { id: "01", icon: <FaChalkboardTeacher />, title: "Live Mentorship", desc: "Learn from industry experts in real-time.", tag: "Interactive", color: "text-blue-400", border: "group-hover:border-blue-500/50" },
+                { id: "02", icon: <FaCode />, title: "Code Reviews", desc: "Get your PRs reviewed by senior engineers.", tag: "Best Practices", color: "text-purple-400", border: "group-hover:border-purple-500/50" },
+                { id: "03", icon: <FaHandshake />, title: "Mock Interviews", desc: "Simulate real technical rounds to prep you.", tag: "Career Prep", color: "text-blue-400", border: "group-hover:border-blue-500/50" },
+                { id: "04", icon: <FaRocket />, title: "Capstone Projects", desc: "Build a production-ready application.", tag: "Portfolio", color: "text-green-400", border: "group-hover:border-green-500/50" }
               ].map((item, i) => (
                 <div key={i} className={`group relative bg-white/5 p-4 md:p-5 rounded-xl md:rounded-2xl border border-white/5 ${item.border} transition-all duration-500 hover:bg-white/10 overflow-hidden flex flex-col min-h-[220px] md:min-h-[250px] hover:scale-105`}>
                   <div className="absolute -right-2 -top-2 text-4xl md:text-5xl font-bold text-white/5 select-none pointer-events-none group-hover:text-white/10 group-hover:scale-110 transition-all">{item.id}</div>
@@ -740,10 +761,10 @@ export default function LandingPage() {
         </section>
 
         {/* --- 7. PARTNERS with enhanced animations (Reduced Size) --- */}
-         <section className="py-12 md:py-16 bg-white/80 backdrop-blur-xl border-y border-white/50 overflow-hidden reveal">
+        <section className="py-12 md:py-16 bg-white/80 backdrop-blur-xl border-y border-white/50 overflow-hidden reveal">
           <div className="text-center mb-6 md:mb-8">
-             <h2 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight">TRUSTED PARTNERS</h2>
-             <div className="w-16 md:w-20 h-1 bg-[#0078d4] mx-auto mt-2 rounded-full"></div>
+            <h2 className="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight">TRUSTED PARTNERS</h2>
+            <div className="w-16 md:w-20 h-1 bg-[#0078d4] mx-auto mt-2 rounded-full"></div>
           </div>
 
           <div className="relative w-full">
@@ -753,26 +774,26 @@ export default function LandingPage() {
             <div className="flex w-[200%] animate-scroll">
               {[...Array(2)].map((_, setIndex) => (
                 <div key={setIndex} className="flex justify-around w-full items-center px-2">
-                   {[
-                     { name: 'Infosys', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIG_3bMJuX8n06ogX1ES2JYOg35VYX8Y_6Ng&s' },
-                     { name: 'TCS', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Hk-cCmmtCp1D7LPyaZeJPruelynAA9KP3A&s' },
-                     { name: 'Wipro', url: 'https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg' },
-                     { name: 'HCL', url: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/HCL_Technologies_logo.svg' },
-                     { name: 'Tech Mahindra', url: 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Tech_Mahindra_Logo.svg' },
-                     { name: 'Accenture', url: 'https://cdn.worldvectorlogo.com/logos/accenture-6.svg' },
-                     { name: 'Capgemini', url: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Capgemini_201x_logo.svg' },
-                     { name: 'Deloitte', url: 'https://cdn.worldvectorlogo.com/logos/deloitte-2.svg' },
-                     { name: 'Microsoft', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShBu0cnozmDr454aSmHhedZltGVgU8fTfZwA&s' },
-                     { name: 'Amazon', url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/3840px-Amazon_logo.svg.png' }
-                   ].map((company, i) => (
-                     <div key={i} className="mx-3 md:mx-4 flex items-center justify-center min-w-[60px] md:min-w-[80px] opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 transform hover:scale-110 cursor-pointer">
-                       <img 
-                        src={company.url} 
-                        alt={company.name} 
-                        className="h-6 md:h-8 w-auto object-contain"
-                       />
-                     </div>
-                   ))}
+                  {[
+                    { name: 'TCS', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Hk-cCmmtCp1D7LPyaZeJPruelynAA9KP3A&s' },
+                    { name: 'Wipro', url: 'https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg' },
+                    { name: 'HCL', url: '/hcl_logo.svg' },
+                    { name: 'Tech Mahindra', url: '/tech_mahindra_logo.svg' },
+                    { name: 'Accenture', url: 'https://cdn.worldvectorlogo.com/logos/accenture-6.svg' },
+                    { name: 'Echo Digital Works', url: '/echo_digital_works_logo.png' },
+                    { name: 'Zoho', url: 'https://vectorlogo.zone/logos/zoho/zoho-ar21.svg' },
+                    { name: 'Cognizant', url: '/cognizant_logo.svg' },
+                    { name: 'Ninos', url: '/ninos_logo.png', heightClass: 'h-18 md:h-22' },
+                    { name: 'CodeTez', url: '/codetez_logo.png', heightClass: 'h-16 md:h-20' }
+                  ].map((company, i) => (
+                    <div key={i} className="mx-3 md:mx-4 flex items-center justify-center min-w-[60px] md:min-w-[80px] opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 transform hover:scale-110 cursor-pointer">
+                      <img
+                        src={company.url}
+                        alt={company.name}
+                        className={`${company.heightClass || 'h-9 md:h-12'} w-auto object-contain`}
+                      />
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
@@ -790,39 +811,38 @@ export default function LandingPage() {
             </div>
 
             <div className="relative min-h-[300px] md:min-h-[350px] mb-6 md:mb-8">
-               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-                  {visibleStories.map((story, i) => (
-                    <div key={`${currentStoryIndex}-${i}`} className="relative group bg-white/80 backdrop-blur-xl rounded-xl md:rounded-2xl p-4 md:p-5 border border-white shadow-md animate-slide-in-right hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
-                        <div className="absolute top-2 right-2 text-3xl md:text-4xl text-slate-100 -z-10 transform rotate-12 group-hover:rotate-6 group-hover:text-slate-200 transition-all"><FaQuoteLeft /></div>
-                        <div className="flex justify-between items-start mb-2 md:mb-3">
-                          <div className={`w-6 h-6 md:w-8 md:h-8 rounded-lg ${story.bgColor} ${story.accentColor} flex items-center justify-center text-sm md:text-base group-hover:scale-110 transition-transform group-hover:rotate-3`}>{story.icon}</div>
-                          <div className="flex text-yellow-400 text-xs gap-0.5">★★★★★</div>
-                        </div>
-                        <p className="text-slate-700 font-medium text-sm md:text-base leading-relaxed mb-3 md:mb-4 relative z-10 min-h-[60px] md:min-h-[70px]">"{story.quote}"</p>
-                        <div className="w-full h-px bg-gradient-to-r from-slate-200 to-transparent mb-2 md:mb-3"></div>
-                        <div className="flex items-center gap-2 md:gap-3">
-                            <div className={`w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center text-xs md:text-sm font-bold text-white bg-gradient-to-br from-slate-700 to-slate-900 group-hover:scale-110 transition-transform`}>{story.name.charAt(0)}</div>
-                            <div>
-                               <h4 className="font-bold text-slate-900 text-xs md:text-sm flex items-center gap-1">{story.name} <FaCheckCircle className="text-blue-400 text-[8px] md:text-[10px]"/></h4>
-                               <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400">{story.role} @ <span className={`font-extrabold ${story.accentColor}`}>{story.co}</span></p>
-                            </div>
-                        </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+                {visibleStories.map((story, i) => (
+                  <div key={`${currentStoryIndex}-${i}`} className="relative group bg-white/80 backdrop-blur-xl rounded-xl md:rounded-2xl p-4 md:p-5 border border-white shadow-md animate-slide-in-right hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+                    <div className="absolute top-2 right-2 text-3xl md:text-4xl text-slate-100 -z-10 transform rotate-12 group-hover:rotate-6 group-hover:text-slate-200 transition-all"><FaQuoteLeft /></div>
+                    <div className="flex justify-between items-start mb-2 md:mb-3">
+                      <div className={`w-6 h-6 md:w-8 md:h-8 rounded-lg ${story.bgColor} ${story.accentColor} flex items-center justify-center text-sm md:text-base group-hover:scale-110 transition-transform group-hover:rotate-3`}>{story.icon}</div>
+                      <div className="flex text-yellow-400 text-xs gap-0.5">★★★★★</div>
                     </div>
-                  ))}
-               </div>
-               <div className="flex justify-center gap-1.5 mt-4 md:mt-5">
-                  {Array.from({ length: Math.ceil(SUCCESS_STORIES.length / 3) }).map((_, idx) => (
-                    <button 
-                      key={idx} 
-                      onClick={() => setCurrentStoryIndex(idx * 3)} 
-                      className={`transition-all duration-300 ${
-                        Math.floor(currentStoryIndex / 3) === idx 
-                          ? 'bg-[#0078d4] w-5 md:w-6 h-2 md:h-2.5' 
-                          : 'bg-slate-300 w-2 h-2 hover:bg-slate-400'
-                      } rounded-full`} 
-                    />
-                  ))}
-               </div>
+                    <p className="text-slate-700 font-medium text-sm md:text-base leading-relaxed mb-3 md:mb-4 relative z-10 min-h-[60px] md:min-h-[70px]">"{story.quote}"</p>
+                    <div className="w-full h-px bg-gradient-to-r from-slate-200 to-transparent mb-2 md:mb-3"></div>
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <div className={`w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center text-xs md:text-sm font-bold text-white bg-gradient-to-br from-slate-700 to-slate-900 group-hover:scale-110 transition-transform`}>{story.name.charAt(0)}</div>
+                      <div>
+                        <h4 className="font-bold text-slate-900 text-xs md:text-sm flex items-center gap-1">{story.name} <FaCheckCircle className="text-blue-400 text-[8px] md:text-[10px]" /></h4>
+                        <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-slate-400">{story.role} @ <span className={`font-extrabold ${story.accentColor}`}>{story.co}</span></p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center gap-1.5 mt-4 md:mt-5">
+                {Array.from({ length: Math.ceil(SUCCESS_STORIES.length / 3) }).map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentStoryIndex(idx * 3)}
+                    className={`transition-all duration-300 ${Math.floor(currentStoryIndex / 3) === idx
+                      ? 'bg-[#0078d4] w-5 md:w-6 h-2 md:h-2.5'
+                      : 'bg-slate-300 w-2 h-2 hover:bg-slate-400'
+                      } rounded-full`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -862,7 +882,7 @@ export default function LandingPage() {
                   {/* Full Name Field */}
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Your Name</label>
-                    <input 
+                    <input
                       type="text"
                       name="fullName"
                       value={formData.fullName}
@@ -877,7 +897,7 @@ export default function LandingPage() {
                   {/* Phone Number Field */}
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Phone Number</label>
-                    <input 
+                    <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
@@ -892,7 +912,7 @@ export default function LandingPage() {
                   {/* Email Field */}
                   <div className="space-y-1">
                     <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Email Address</label>
-                    <input 
+                    <input
                       type="email"
                       name="email"
                       value={formData.email}
@@ -922,14 +942,11 @@ export default function LandingPage() {
                       <option value="fullstack">Full Stack Development</option>
                       <option value="networking">Networking</option>
                       <option value="scrum">Scrum Master</option>
-                      <option value="sap">SAP</option>
-                      <option value="cadd">CADD</option>
-                      <option value="tally">Tally</option>
                     </select>
                   </div>
 
                   {/* Submit Button */}
-                  <button 
+                  <button
                     type="submit"
                     disabled={isSubmitting}
                     className="w-full py-3.5 bg-gradient-to-r from-[#0078d4] to-[#00bcf2] text-white font-bold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all text-base flex items-center justify-center gap-2 group mt-4"
@@ -954,7 +971,7 @@ export default function LandingPage() {
                 {/* Support Link */}
                 <p className="text-center text-xs font-medium text-slate-500 mt-6">
                   NEED HELP?{' '}
-                  <a 
+                  <a
                     href={`https://wa.me/${COMPANY_WHATSAPP}?text=Hi%2C%20I%20need%20help%20with%20enrollment`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -968,45 +985,45 @@ export default function LandingPage() {
               {/* Map and Contact Info - Unchanged */}
               <div className="flex flex-col gap-3 h-full">
                 <div className="flex-1 bg-slate-200 rounded-xl md:rounded-2xl overflow-hidden shadow-md border border-white relative min-h-[200px] md:min-h-[220px] group">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.1306473489817!2d77.67679071015431!3d12.834833117810781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6d1c3868b67d%3A0x32ec955bf9ca2e2d!2sMaster%20Mind%20Learning%20Solutions!5e0!3m2!1sen!2sin!4v1771595608773!5m2!1sen!2sin" width="100%" height="100%" style={{border:0, filter: 'grayscale(100%) contrast(1.2)'}} className="absolute inset-0 group-hover:filter group-hover:grayscale-50 transition-all duration-700"></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.1306473489817!2d77.67679071015431!3d12.834833117810781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6d1c3868b67d%3A0x32ec955bf9ca2e2d!2sMaster%20Mind%20Learning%20Solutions!5e0!3m2!1sen!2sin!4v1771595608773!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0, filter: 'grayscale(100%) contrast(1.2)' }} className="absolute inset-0 group-hover:filter group-hover:grayscale-50 transition-all duration-700"></iframe>
                   <div className="absolute bottom-2 left-2 md:bottom-3 md:left-3 bg-white/90 backdrop-blur-md px-3 py-2 rounded-lg shadow-md hover:scale-105 transition-transform">
-                     <div className="flex items-center gap-1.5">
-                        <div className="w-5 h-5 md:w-6 md:h-6 bg-red-50 text-red-500 rounded-full flex items-center justify-center text-xs"><FaMapMarkedAlt/></div>
-                        <div>
-                          <p className="text-[8px] font-bold text-slate-400 uppercase">Headquarters</p>
-                          <p className="font-bold text-slate-900 text-xs">Electronic City, Bangalore</p>
-                        </div>
-                     </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-5 h-5 md:w-6 md:h-6 bg-red-50 text-red-500 rounded-full flex items-center justify-center text-xs"><FaMapMarkedAlt /></div>
+                      <div>
+                        <p className="text-[8px] font-bold text-slate-400 uppercase">Headquarters</p>
+                        <p className="font-bold text-slate-900 text-xs">Electronic City, Bangalore</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <div className="bg-[#0f172a] rounded-xl md:rounded-2xl p-4 md:p-5 text-white shadow-md flex flex-col justify-center relative overflow-hidden group">
-                   <div className="absolute -right-5 -bottom-5 w-20 h-20 bg-gradient-to-tl from-[#00bcf2]/20 to-transparent rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
-                   <div className="space-y-2 md:space-y-3 relative z-10">
-                      <div className="flex items-center gap-2 group/item">
-                         <div className="w-6 h-6 md:w-8 md:h-8 bg-white/10 rounded-lg flex items-center justify-center text-[#00bcf2] group-hover/item:scale-110 transition-transform text-xs md:text-sm"><FaPhoneAlt/></div>
-                         <div>
-                           <p className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase">Call Us</p>
-                           <p className="text-sm md:text-base font-bold">+91 76768 09008</p>
-                         </div>
+                  <div className="absolute -right-5 -bottom-5 w-20 h-20 bg-gradient-to-tl from-[#00bcf2]/20 to-transparent rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+                  <div className="space-y-2 md:space-y-3 relative z-10">
+                    <div className="flex items-center gap-2 group/item">
+                      <div className="w-6 h-6 md:w-8 md:h-8 bg-white/10 rounded-lg flex items-center justify-center text-[#00bcf2] group-hover/item:scale-110 transition-transform text-xs md:text-sm"><FaPhoneAlt /></div>
+                      <div>
+                        <p className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase">Call Us</p>
+                        <p className="text-sm md:text-base font-bold">+91 7904075373</p>
                       </div>
-                      <div className="w-full h-px bg-white/10"></div>
-                      <div className="flex items-center gap-2 group/item">
-                         <div className="w-6 h-6 md:w-8 md:h-8 bg-white/10 rounded-lg flex items-center justify-center text-[#0078d4] group-hover/item:scale-110 transition-transform text-xs md:text-sm"><FaEnvelope/></div>
-                         <div>
-                           <p className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase">Email Us</p>
-                           <p className="text-sm md:text-base font-bold">blrelectroniccity@gmail.com</p>
-                         </div>
+                    </div>
+                    <div className="w-full h-px bg-white/10"></div>
+                    <div className="flex items-center gap-2 group/item">
+                      <div className="w-6 h-6 md:w-8 md:h-8 bg-white/10 rounded-lg flex items-center justify-center text-[#0078d4] group-hover/item:scale-110 transition-transform text-xs md:text-sm"><FaEnvelope /></div>
+                      <div>
+                        <p className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase">Email Us</p>
+                        <p className="text-sm md:text-base font-bold">blrelectroniccity@gmail.com</p>
                       </div>
-                      <div className="w-full h-px bg-white/10"></div>
-                      <div className="flex items-center gap-2 group/item">
-                         <div className="w-6 h-6 md:w-8 md:h-8 bg-white/10 rounded-lg flex items-center justify-center text-green-400 group-hover/item:scale-110 transition-transform text-xs md:text-sm"><FaWhatsapp/></div>
-                         <div>
-                           <p className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase">WhatsApp</p>
-                           <p className="text-sm md:text-base font-bold">+91 76768 09008</p>
-                         </div>
+                    </div>
+                    <div className="w-full h-px bg-white/10"></div>
+                    <div className="flex items-center gap-2 group/item">
+                      <div className="w-6 h-6 md:w-8 md:h-8 bg-white/10 rounded-lg flex items-center justify-center text-green-400 group-hover/item:scale-110 transition-transform text-xs md:text-sm"><FaWhatsapp /></div>
+                      <div>
+                        <p className="text-[8px] md:text-[9px] font-bold text-slate-400 uppercase">WhatsApp</p>
+                        <p className="text-sm md:text-base font-bold">+91 7904075373</p>
                       </div>
-                   </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

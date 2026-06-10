@@ -17,16 +17,53 @@ export default function Navbar() {
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
         }
 
-        /* --- Logo Animation (Non-Inverted 3D Flip) --- */
-        @keyframes flip-glimmer {
-          0% { transform: perspective(1000px) rotateY(0deg); filter: drop-shadow(0 0 2px rgba(251,191,36,0.3)); }
-          50% { transform: perspective(1000px) rotateY(90deg); }
-          100% { transform: perspective(1000px) rotateY(0deg); filter: drop-shadow(0 0 8px rgba(251,191,36,0.8)); }
+        /* --- 3D Rotating Logo (Double Sided) --- */
+        .logo-container {
+          perspective: 1000px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
-        
-        .logo-flip {
-          animation: flip-glimmer 4s linear infinite alternate;
+
+        .logo-card {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          animation: spin-3d 8s linear infinite;
+          transition: filter 0.3s ease;
+        }
+
+        .logo-card:hover {
+          filter: drop-shadow(0 4px 12px rgba(244, 117, 41, 0.3));
+        }
+
+        .logo-face {
+          position: absolute;
+          width: 100%;
+          height: 100%;
           backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .logo-front {
+          transform: rotateY(0deg);
+        }
+
+        .logo-back {
+          transform: rotateY(180deg);
+        }
+
+        @keyframes spin-3d {
+          0% {
+            transform: rotateY(0deg);
+          }
+          100% {
+            transform: rotateY(360deg);
+          }
         }
 
         /* --- Nav Links Unique Hover & Click --- */
@@ -82,12 +119,28 @@ export default function Navbar() {
         <div className="max-w-[1400px] mx-auto w-full flex justify-between items-center h-[70px]">
           
           <Link to="/" className="flex items-center gap-3 decoration-none z-50">
-            <img 
-              src="/logo.png" 
-              alt="Logo" 
-              className="logo-flip h-12 md:h-[70px] w-auto" 
-              onError={(e) => { e.currentTarget.src = 'https://placehold.co/100x40/transparent/0078d4?text=LOGO' }}
-            />
+            <div className="logo-container h-12 md:h-[70px] aspect-square relative">
+              <div className="logo-card w-full h-full">
+                {/* Front Side */}
+                <div className="logo-face logo-front">
+                  <img 
+                    src="/logo.png" 
+                    alt="Logo Front" 
+                    className="h-full w-full object-contain"
+                    onError={(e) => { e.currentTarget.src = 'https://placehold.co/100x40/transparent/0078d4?text=LOGO' }}
+                  />
+                </div>
+                {/* Back Side */}
+                <div className="logo-face logo-back">
+                  <img 
+                    src="/logo.png" 
+                    alt="Logo Back" 
+                    className="h-full w-full object-contain"
+                    onError={(e) => { e.currentTarget.src = 'https://placehold.co/100x40/transparent/0078d4?text=LOGO' }}
+                  />
+                </div>
+              </div>
+            </div>
           </Link>
 
           <ul className="hidden lg:flex gap-[2.5rem] list-none items-center m-0 p-0">

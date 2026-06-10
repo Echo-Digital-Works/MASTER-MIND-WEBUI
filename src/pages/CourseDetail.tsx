@@ -1,9 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
-import { 
-  HiOutlineClock, 
-  HiOutlineAcademicCap, 
-  HiOutlineCheckCircle, 
+import {
+  HiOutlineClock,
+  HiOutlineAcademicCap,
+  HiOutlineCheckCircle,
   HiOutlineShieldCheck,
   HiOutlineLightningBolt,
   HiOutlineArrowLeft,
@@ -33,7 +33,7 @@ export default function CourseDetail() {
   });
 
   // Company WhatsApp number (replace with your actual number)
-  const COMPANY_WHATSAPP = "+91 93849 36929"; // Format: country code + number without +
+  const COMPANY_WHATSAPP = "+91 7904075373"; // Format: country code + number without +
 
   // Comprehensive course database with all new courses and specific images
   const courseDatabase = {
@@ -66,12 +66,12 @@ export default function CourseDetail() {
         { week: 10, topic: "Live Projects", description: "Build real-world cloud solutions including multi-cloud architecture and serverless applications" }
       ],
       projects: [
-        { 
-          title: "Multi-Cloud Disaster Recovery Solution", 
+        {
+          title: "Multi-Cloud Disaster Recovery Solution",
           description: "Design and implement a disaster recovery solution that spans across AWS and Azure, ensuring business continuity with automated failover and data replication."
         },
-        { 
-          title: "Serverless E-Commerce Platform", 
+        {
+          title: "Serverless E-Commerce Platform",
           description: "Build a complete e-commerce platform using AWS Lambda, API Gateway, DynamoDB, and S3, demonstrating serverless architecture best practices."
         }
       ],
@@ -132,12 +132,12 @@ export default function CourseDetail() {
         { week: 12, topic: "Live Projects", description: "Develop complete test automation frameworks and execute real-world testing scenarios" }
       ],
       projects: [
-        { 
-          title: "E-Commerce Test Automation Suite", 
+        {
+          title: "E-Commerce Test Automation Suite",
           description: "Develop a comprehensive test automation framework for an e-commerce website using Selenium WebDriver, TestNG, and Cucumber with Page Object Model design pattern."
         },
-        { 
-          title: "API Testing Framework for Banking Application", 
+        {
+          title: "API Testing Framework for Banking Application",
           description: "Create a robust API testing framework using REST Assured for a banking application, including authentication flows, data validation, and performance testing with JMeter."
         }
       ],
@@ -200,12 +200,12 @@ export default function CourseDetail() {
         { week: 14, topic: "Live Projects", description: "Build end-to-end data analytics solutions for real business problems" }
       ],
       projects: [
-        { 
-          title: "Customer Churn Prediction Dashboard", 
+        {
+          title: "Customer Churn Prediction Dashboard",
           description: "Build an interactive dashboard using Tableau and Python to predict customer churn for a telecom company, incorporating machine learning models and business insights."
         },
-        { 
-          title: "Sales Analytics & Forecasting System", 
+        {
+          title: "Sales Analytics & Forecasting System",
           description: "Create a comprehensive sales analytics solution using Power BI and SQL, including sales forecasting, regional performance analysis, and interactive KPI dashboards."
         }
       ],
@@ -270,12 +270,12 @@ export default function CourseDetail() {
         { week: 16, topic: "Live Projects", description: "Build complete production-ready full stack applications" }
       ],
       projects: [
-        { 
-          title: "Social Media Analytics Dashboard", 
+        {
+          title: "Social Media Analytics Dashboard",
           description: "Build a full-stack social media analytics platform using React, Node.js, and MongoDB that aggregates data from multiple platforms and provides real-time engagement metrics and content performance insights."
         },
-        { 
-          title: "E-Learning Management System", 
+        {
+          title: "E-Learning Management System",
           description: "Develop a comprehensive learning management system with course creation, video streaming, quiz modules, and progress tracking using the MERN stack with real-time features using Socket.io."
         }
       ],
@@ -336,12 +336,12 @@ export default function CourseDetail() {
         { week: 12, topic: "Live Projects", description: "Design and implement complete enterprise network solutions with monitoring and automation" }
       ],
       projects: [
-        { 
-          title: "Enterprise Network Design & Implementation", 
+        {
+          title: "Enterprise Network Design & Implementation",
           description: "Design and simulate a complete enterprise network with multiple VLANs, routing protocols (OSPF, EIGRP), and security policies using Cisco Packet Tracer or GNS3."
         },
-        { 
-          title: "Network Monitoring & Automation System", 
+        {
+          title: "Network Monitoring & Automation System",
           description: "Build a network monitoring solution using Python, SNMP, and Grafana to track network performance, alert on anomalies, and automate configuration backups."
         }
       ],
@@ -398,12 +398,12 @@ export default function CourseDetail() {
         { week: 8, topic: "Live Projects", description: "Lead real Agile teams through complete project cycles and implement Scrum frameworks" }
       ],
       projects: [
-        { 
-          title: "Agile Transformation for a Legacy Team", 
+        {
+          title: "Agile Transformation for a Legacy Team",
           description: "Create a complete Agile transformation plan for a traditional development team, including training materials, Scrum event templates, and metrics dashboard for tracking progress."
         },
-        { 
-          title: "Scaled Agile Framework Implementation", 
+        {
+          title: "Scaled Agile Framework Implementation",
           description: "Design a scaled Agile framework for a multi-team product development organization, including coordination mechanisms, dependency management, and release planning strategies."
         }
       ],
@@ -432,208 +432,6 @@ export default function CourseDetail() {
       totalSeats: 25,
       availableSeats: 10,
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
-    },
-    // SAP
-    "7": {
-      id: 7,
-      title: "SAP",
-      duration: "20 Weeks",
-      level: "Beginner to Advanced",
-      category: "ERP",
-      accent: "from-blue-700 to-indigo-900",
-      overview: "Enterprise resource planning with SAP. Learn SAP modules including FICO, MM, SD, and ABAP programming. Master business processes and integration for enterprise success.",
-      longDescription: "This comprehensive program covers the most in-demand SAP modules and prepares you for a career as an SAP consultant. You'll learn both functional and technical aspects of SAP, understanding how businesses use SAP to streamline operations and drive growth.",
-      highlights: [
-        "Multiple SAP module coverage",
-        "Real-world implementation scenarios",
-        "ABAP programming fundamentals",
-        "SAP S/4HANA introduction"
-      ],
-      curriculum: [
-        { week: 1, topic: "SAP Overview", description: "SAP architecture, navigation, and enterprise structure" },
-        { week: 2, topic: "SAP FICO - Finance", description: "General ledger, accounts payable/receivable, and asset accounting" },
-        { week: 3, topic: "SAP FICO - Controlling", description: "Cost centers, profit centers, and internal orders" },
-        { week: 4, topic: "SAP MM - Materials Management", description: "Procurement, inventory management, and invoice verification" },
-        { week: 5, topic: "SAP SD - Sales & Distribution", description: "Sales order processing, pricing, and shipping" },
-        { week: 6, topic: "SAP PP - Production Planning", description: "BOMs, routing, and production orders" },
-        { week: 7, topic: "SAP QM - Quality Management", description: "Quality planning, inspection, and control" },
-        { week: 8, topic: "SAP HR - Human Resources", description: "Personnel administration, payroll, and time management" },
-        { week: 9, topic: "ABAP Programming Basics", description: "Data dictionary, reports, and module pool programming" },
-        { week: 10, topic: "Advanced ABAP", description: "ALV reports, BAPIs, and user exits" },
-        { week: 11, topic: "SAP HANA Introduction", description: "In-memory computing and SAP HANA studio" },
-        { week: 12, topic: "SAP S/4HANA", description: "Next-generation ERP with Fiori UX" },
-        { week: 13, topic: "SAP Integration", description: "IDocs, RFCs, and system integration" },
-        { week: 14, topic: "SAP Security", description: "Authorization concepts and user management" },
-        { week: 15, topic: "Reporting in SAP", description: "Standard reports and custom reporting" },
-        { week: 16, topic: "SAP Implementation", description: "ASAP methodology and project phases" },
-        { week: 17, topic: "Industry Best Practices", description: "SAP best practices for various industries" },
-        { week: 18, topic: "Case Studies", description: "Real-world SAP implementation scenarios" },
-        { week: 19, topic: "Certification Preparation", description: "Practice exams and module-specific prep" },
-        { week: 20, topic: "Live Projects", description: "Complete real SAP implementation projects with multiple module integrations" }
-      ],
-      projects: [
-        { 
-          title: "SAP FICO Implementation for Manufacturing Company", 
-          description: "Design and configure SAP FICO modules for a medium-sized manufacturing company, including GL, AP, AR, asset accounting, and cost center accounting with integration to MM and SD."
-        },
-        { 
-          title: "ABAP Report Development Suite", 
-          description: "Develop a suite of custom ABAP reports for business intelligence, including ALV reports, interactive reports, and BAPI integration for real-time data extraction."
-        }
-      ],
-      prerequisites: [
-        "Accounting fundamentals (for FICO)",
-        "Business process understanding",
-        "Basic computer skills",
-        "Analytical mindset"
-      ],
-      careerOpportunities: [
-        { role: "SAP Consultant", salary: "₹6-15 LPA" },
-        { role: "SAP FICO Specialist", salary: "₹7-18 LPA" },
-        { role: "SAP MM Analyst", salary: "₹6-16 LPA" },
-        { role: "SAP ABAP Developer", salary: "₹5-14 LPA" },
-        { role: "ERP Project Manager", salary: "₹12-25 LPA" }
-      ],
-      certifications: [
-        "SAP Certified Application Associate",
-        "SAP FICO Certification",
-        "SAP MM Certification",
-        "SAP ABAP Certification"
-      ],
-      batchStart: "April 25, 2026",
-      classMode: "Online & Classroom",
-      durationWeeks: 20,
-      totalSeats: 25,
-      availableSeats: 20,
-      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=1200&q=80"
-    },
-    // CADD
-    "8": {
-      id: 8,
-      title: "CADD",
-      duration: "12 Weeks",
-      level: "Beginner to Advanced",
-      category: "Design",
-      accent: "from-red-500 to-pink-600",
-      overview: "Computer-Aided Design and Drafting. Master AutoCAD, SolidWorks, and 3D modeling techniques for engineering and architectural applications. Create professional designs and build your portfolio.",
-      longDescription: "This hands-on program teaches you industry-standard CAD software and design principles. From 2D drafting to complex 3D modeling, you'll develop the skills needed for careers in engineering, architecture, and product design. The curriculum includes real-world projects and portfolio development.",
-      highlights: [
-        "Multiple CAD software mastery",
-        "2D and 3D modeling expertise",
-        "Industry-specific projects",
-        "Professional portfolio development"
-      ],
-      curriculum: [
-        { week: 1, topic: "CAD Fundamentals", description: "Design principles, coordinate systems, and interface basics" },
-        { week: 2, topic: "AutoCAD 2D Drafting", description: "Drawing tools, modification commands, and layers" },
-        { week: 3, topic: "AutoCAD Advanced 2D", description: "Blocks, attributes, and external references" },
-        { week: 4, topic: "AutoCAD 3D Modeling", description: "3D primitives, extrusion, and solid editing" },
-        { week: 5, topic: "SolidWorks Basics", description: "Sketching, features, and part modeling" },
-        { week: 6, topic: "SolidWorks Advanced", description: "Advanced features, configurations, and design tables" },
-        { week: 7, topic: "Assembly Modeling", description: "Mates, sub-assemblies, and exploded views" },
-        { week: 8, topic: "Surface Modeling", description: "Complex surface creation and editing" },
-        { week: 9, topic: "Sheet Metal Design", description: "Sheet metal features and flat patterns" },
-        { week: 10, topic: "Rendering & Animation", description: "Visualization techniques and motion studies" },
-        { week: 11, topic: "Industry Applications", description: "Architectural, mechanical, and product design" },
-        { week: 12, topic: "Live Projects", description: "Create professional design portfolios with complete mechanical and architectural projects" }
-      ],
-      projects: [
-        { 
-          title: "Mechanical Assembly Design Project", 
-          description: "Create a complete mechanical assembly of a gearbox system using SolidWorks, including all parts, assemblies, engineering drawings, and exploded view animations."
-        },
-        { 
-          title: "Architectural Building Design", 
-          description: "Design a modern residential building using AutoCAD and Revit, including floor plans, elevations, sections, 3D visualization, and construction documentation."
-        }
-      ],
-      prerequisites: [
-        "Basic drawing skills",
-        "Spatial visualization",
-        "Interest in design",
-        "Attention to detail"
-      ],
-      careerOpportunities: [
-        { role: "CAD Designer", salary: "₹3-7 LPA" },
-        { role: "Drafting Technician", salary: "₹3-6 LPA" },
-        { role: "Product Design Engineer", salary: "₹4-9 LPA" },
-        { role: "Architectural Drafter", salary: "₹3-8 LPA" },
-        { role: "Mechanical Designer", salary: "₹4-10 LPA" }
-      ],
-      certifications: [
-        "Autodesk Certified Professional",
-        "SolidWorks Certified Professional",
-        "Dassault Systèmes Certification",
-        "AutoCAD Specialist"
-      ],
-      batchStart: "April 8, 2026",
-      classMode: "Online & Classroom",
-      durationWeeks: 12,
-      totalSeats: 25,
-      availableSeats: 14,
-      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?auto=format&fit=crop&w=1200&q=80"
-    },
-    // Tally
-    "9": {
-      id: 9,
-      title: "Tally",
-      duration: "8 Weeks",
-      level: "Beginner",
-      category: "Accounting",
-      accent: "from-green-600 to-teal-600",
-      overview: "Complete accounting with Tally ERP. Learn financial management, inventory tracking, GST compliance, and payroll management for business operations. Perfect for accounting professionals and business owners.",
-      longDescription: "This practical program teaches you to use Tally ERP for all business accounting needs. From basic ledger creation to advanced GST returns and payroll processing, you'll gain hands-on experience with India's most popular accounting software. The curriculum is aligned with current tax regulations and business requirements.",
-      highlights: [
-        "Complete accounting cycle",
-        "GST and tax compliance",
-        "Inventory and payroll management",
-        "Real business scenarios"
-      ],
-      curriculum: [
-        { week: 1, topic: "Accounting Fundamentals", description: "Basic accounting principles and concepts" },
-        { week: 2, topic: "Tally Interface", description: "Company creation, ledgers, and groups" },
-        { week: 3, topic: "Voucher Entry", description: "Different voucher types and accounting entries" },
-        { week: 4, topic: "Inventory Management", description: "Stock groups, units, and inventory vouchers" },
-        { week: 5, topic: "GST Configuration", description: "GST setup, tax rates, and return filing" },
-        { week: 6, topic: "TDS & TCS", description: "Tax deduction and collection at source" },
-        { week: 7, topic: "Payroll Processing", description: "Salary calculations, PF, and ESI" },
-        { week: 8, topic: "Live Projects", description: "Set up complete accounting systems for real businesses with GST compliance and reporting" }
-      ],
-      projects: [
-        { 
-          title: "Complete Accounting System for Retail Business", 
-          description: "Set up a complete accounting system for a retail business including inventory management, GST compliance, payroll processing, and financial statement generation."
-        },
-        { 
-          title: "GST Compliance & Reporting Dashboard", 
-          description: "Create a comprehensive GST compliance system with invoice management, return filing, reconciliation, and reporting dashboards for multiple business entities."
-        }
-      ],
-      prerequisites: [
-        "Basic accounting knowledge",
-        "Computer literacy",
-        "Numerical ability",
-        "Attention to detail"
-      ],
-      careerOpportunities: [
-        { role: "Accountant", salary: "₹2-5 LPA" },
-        { role: "Tally Operator", salary: "₹2-4 LPA" },
-        { role: "Accounts Executive", salary: "₹3-6 LPA" },
-        { role: "Finance Assistant", salary: "₹2-5 LPA" },
-        { role: "GST Consultant", salary: "₹3-7 LPA" }
-      ],
-      certifications: [
-        "Tally Certified Professional",
-        "Tally ERP Expert",
-        "GST Practitioner Certification",
-        "Tally Prime Certification"
-      ],
-      batchStart: "April 22, 2026",
-      classMode: "Online & Classroom",
-      durationWeeks: 8,
-      totalSeats: 30,
-      availableSeats: 24,
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80"
     }
   };
 
@@ -653,16 +451,13 @@ export default function CourseDetail() {
 
     try {
       // Get the selected course name
-      const selectedCourseName = formData.course ? 
+      const selectedCourseName = formData.course ?
         (formData.course === 'cloud' ? 'Cloud Computing' :
-         formData.course === 'testing' ? 'Manual/Automation Testing' :
-         formData.course === 'data' ? 'Data Analytics' :
-         formData.course === 'fullstack' ? 'Full Stack Development' :
-         formData.course === 'networking' ? 'Networking' :
-         formData.course === 'scrum' ? 'Scrum Master' :
-         formData.course === 'sap' ? 'SAP' :
-         formData.course === 'cadd' ? 'CADD' :
-         formData.course === 'tally' ? 'Tally' : formData.course) : 'Not selected';
+          formData.course === 'testing' ? 'Manual/Automation Testing' :
+            formData.course === 'data' ? 'Data Analytics' :
+              formData.course === 'fullstack' ? 'Full Stack Development' :
+                formData.course === 'networking' ? 'Networking' :
+                  formData.course === 'scrum' ? 'Scrum Master' : formData.course) : 'Not selected';
 
       // Format the WhatsApp message
       const message = `*New Course Enrollment Request*%0A%0A` +
@@ -720,12 +515,12 @@ export default function CourseDetail() {
 
   return (
     <div className="bg-[#fcfcfd] min-h-screen font-sans">
-      
+
       {/* Enroll Form Modal - Updated to match screenshot */}
       {showEnrollForm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl max-w-md w-full relative shadow-2xl">
-            <button 
+            <button
               onClick={() => setShowEnrollForm(false)}
               className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors z-10"
             >
@@ -746,7 +541,7 @@ export default function CourseDetail() {
 
                 {/* Form Fields */}
                 <div>
-                  <input 
+                  <input
                     type="text"
                     name="fullName"
                     value={formData.fullName}
@@ -759,7 +554,7 @@ export default function CourseDetail() {
                 </div>
 
                 <div>
-                  <input 
+                  <input
                     type="email"
                     name="email"
                     value={formData.email}
@@ -772,7 +567,7 @@ export default function CourseDetail() {
                 </div>
 
                 <div>
-                  <input 
+                  <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
@@ -785,7 +580,7 @@ export default function CourseDetail() {
                 </div>
 
                 <div>
-                  <select 
+                  <select
                     name="course"
                     value={formData.course}
                     onChange={handleInputChange}
@@ -800,9 +595,6 @@ export default function CourseDetail() {
                     <option value="fullstack">Full Stack Development</option>
                     <option value="networking">Networking</option>
                     <option value="scrum">Scrum Master</option>
-                    <option value="sap">SAP</option>
-                    <option value="cadd">CADD</option>
-                    <option value="tally">Tally</option>
                   </select>
                 </div>
 
@@ -827,7 +619,7 @@ export default function CourseDetail() {
 
                 {/* Additional fields from screenshot - Comments/Questions */}
                 <div>
-                  <textarea 
+                  <textarea
                     name="comments"
                     value={formData.comments}
                     onChange={handleInputChange}
@@ -842,7 +634,7 @@ export default function CourseDetail() {
                 <div className="text-center mt-4">
                   <p className="text-sm text-gray-600">
                     NEED HELP?{' '}
-                    <a 
+                    <a
                       href={`https://wa.me/${COMPANY_WHATSAPP}?text=Hi%2C%20I%20need%20help%20with%20enrollment`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -899,7 +691,7 @@ export default function CourseDetail() {
               <h2 className="text-5xl font-black mb-4 tracking-tighter">
                 Thank You!
               </h2>
-              
+
               <p className="text-3xl font-bold mb-6 text-yellow-200">
                 {formData.fullName || 'Student'}! 🎓
               </p>
@@ -920,17 +712,17 @@ export default function CourseDetail() {
               <div className="mb-8">
                 <p className="text-sm mb-4 opacity-90">Connect with us on social media</p>
                 <div className="flex justify-center gap-4">
-                  <a 
+                  <a
                     href={`https://wa.me/${COMPANY_WHATSAPP}`}
-                    target="_blank" 
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-2xl hover:scale-110 transition-transform"
                   >
                     <FaWhatsapp />
                   </a>
-                  <a 
-                    href="https://www.instagram.com/master_mind_learning_solutions/" 
-                    target="_blank" 
+                  <a
+                    href="https://www.instagram.com/master_mind_learning_solutions/"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full bg-pink-600 flex items-center justify-center text-2xl hover:scale-110 transition-transform"
                   >
@@ -970,13 +762,13 @@ export default function CourseDetail() {
 
       {/* 1. IMMERSIVE HERO SECTION */}
       <div className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden bg-slate-900">
-        <img 
-          src={course.image} 
-          alt={course.title} 
+        <img
+          src={course.image}
+          alt={course.title}
           className="absolute inset-0 w-full h-full object-cover opacity-40 scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/60 to-transparent"></div>
-        
+
         <div className="absolute inset-0 flex items-end pb-16">
           <div className="max-w-[1200px] mx-auto px-6 w-full">
             <Link to="/courses" className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-8 transition-colors font-bold text-sm uppercase tracking-widest">
@@ -985,7 +777,7 @@ export default function CourseDetail() {
             <h1 className="text-4xl md:text-7xl font-black text-white leading-tight max-w-4xl tracking-tighter">
               {course.title}
             </h1>
-            
+
             <div className="flex flex-wrap gap-4 mt-8">
               <div className="px-6 py-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center gap-3 text-white">
                 <HiOutlineClock className="text-xl text-[#f47529]" />
@@ -1006,15 +798,15 @@ export default function CourseDetail() {
 
       {/* 2. MAIN CONTENT GRID */}
       <div className="max-w-[1200px] mx-auto px-6 -mt-10 relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-12 pb-24">
-        
+
         {/* LEFT SIDE: DETAILS */}
         <div className="lg:col-span-2 space-y-12">
-          
+
           {/* Overview Card */}
           <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-slate-100">
             <h2 className="text-3xl font-black text-slate-900 mb-6 flex items-center gap-3 uppercase tracking-tighter">
-               Program Overview
-               <div className="h-1 flex-grow bg-slate-50 rounded-full ml-4"></div>
+              Program Overview
+              <div className="h-1 flex-grow bg-slate-50 rounded-full ml-4"></div>
             </h2>
             <p className="text-slate-500 text-lg leading-relaxed font-medium mb-6">
               {course.overview}
@@ -1040,8 +832,8 @@ export default function CourseDetail() {
           {/* Featured Projects Section */}
           <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-slate-100">
             <h2 className="text-3xl font-black text-slate-900 mb-8 uppercase tracking-tighter flex items-center gap-3">
-               Featured Live Projects
-               <div className="h-1 flex-grow bg-slate-50 rounded-full ml-4"></div>
+              Featured Live Projects
+              <div className="h-1 flex-grow bg-slate-50 rounded-full ml-4"></div>
             </h2>
             <div className="space-y-6">
               {course.projects?.map((project, index) => (
@@ -1087,8 +879,8 @@ export default function CourseDetail() {
           {/* Prerequisites */}
           <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-slate-100">
             <h2 className="text-3xl font-black text-slate-900 mb-6 flex items-center gap-3 uppercase tracking-tighter">
-               Prerequisites
-               <div className="h-1 flex-grow bg-slate-50 rounded-full ml-4"></div>
+              Prerequisites
+              <div className="h-1 flex-grow bg-slate-50 rounded-full ml-4"></div>
             </h2>
             <ul className="space-y-4">
               {course.prerequisites.map((item, index) => (
@@ -1103,8 +895,8 @@ export default function CourseDetail() {
           {/* Career Opportunities */}
           <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-slate-100">
             <h2 className="text-3xl font-black text-slate-900 mb-6 flex items-center gap-3 uppercase tracking-tighter">
-               Career Opportunities
-               <div className="h-1 flex-grow bg-slate-50 rounded-full ml-4"></div>
+              Career Opportunities
+              <div className="h-1 flex-grow bg-slate-50 rounded-full ml-4"></div>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {course.careerOpportunities.map((item, index) => (
@@ -1120,17 +912,17 @@ export default function CourseDetail() {
         {/* RIGHT SIDE: ENROLLMENT SIDEBAR */}
         <div className="relative">
           <div className="bg-white rounded-[2.5rem] p-8 shadow-2xl shadow-slate-200/50 border border-slate-100 sticky top-24">
-            
+
             {/* Pulsing Status Badge */}
             <div className="flex items-center gap-2 mb-6">
-               <span className="relative flex h-3 w-3">
-                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-               </span>
-               <span className="text-xs font-black uppercase tracking-widest text-slate-400">Enrollment Active</span>
-               <span className="ml-auto bg-orange-100 text-[#f27324] text-xs font-black px-3 py-1 rounded-full">
-                 {course.availableSeats} seats left
-               </span>
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+              </span>
+              <span className="text-xs font-black uppercase tracking-widest text-slate-400">Enrollment Active</span>
+              <span className="ml-auto bg-orange-100 text-[#f27324] text-xs font-black px-3 py-1 rounded-full">
+                {course.availableSeats} seats left
+              </span>
             </div>
 
             <h3 className="text-2xl font-black text-slate-900 mb-6 tracking-tighter">Program Schedule</h3>
@@ -1138,25 +930,25 @@ export default function CourseDetail() {
             {/* Quick Info Grid */}
             <div className="space-y-4 mb-8">
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-                 <HiOutlineCalendar className="text-2xl text-[#008bdc]" />
-                 <div>
-                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Batch Starts</p>
-                   <p className="text-lg font-black text-slate-900">{course.batchStart}</p>
-                 </div>
+                <HiOutlineCalendar className="text-2xl text-[#008bdc]" />
+                <div>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Batch Starts</p>
+                  <p className="text-lg font-black text-slate-900">{course.batchStart}</p>
+                </div>
               </div>
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-                 <HiOutlineGlobeAlt className="text-2xl text-[#008bdc]" />
-                 <div>
-                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Class Mode</p>
-                   <p className="text-lg font-black text-slate-900">{course.classMode}</p>
-                 </div>
+                <HiOutlineGlobeAlt className="text-2xl text-[#008bdc]" />
+                <div>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Class Mode</p>
+                  <p className="text-lg font-black text-slate-900">{course.classMode}</p>
+                </div>
               </div>
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
-                 <HiOutlineUserGroup className="text-2xl text-[#008bdc]" />
-                 <div>
-                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Batch Size</p>
-                   <p className="text-lg font-black text-slate-900">{course.totalSeats} students</p>
-                 </div>
+                <HiOutlineUserGroup className="text-2xl text-[#008bdc]" />
+                <div>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Batch Size</p>
+                  <p className="text-lg font-black text-slate-900">{course.totalSeats} students</p>
+                </div>
               </div>
             </div>
 

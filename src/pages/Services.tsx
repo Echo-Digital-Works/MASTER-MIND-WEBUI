@@ -42,7 +42,7 @@ const serviceCategories = [
     color: "text-green-500",
     bg: "bg-green-50",
     border: "border-green-100",
-    items: ["SAP Course", "SAP Training", "SQL Course", "SQL Training", "Tally Training", "Excel Training Programs", "Microsoft Office Course", "For Microsoft Office Training"]
+    items: ["SQL Course", "SQL Training", "Excel Training Programs", "Microsoft Office Course", "For Microsoft Office Training"]
   },
   {
     title: "Training Methodologies",

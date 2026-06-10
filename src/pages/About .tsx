@@ -1,32 +1,32 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { 
-  FaBriefcase, 
-  FaVolumeMute, 
-  FaVolumeUp, 
+import {
+  FaBriefcase,
+  FaVolumeMute,
+  FaVolumeUp,
   FaStepForward,
   FaAward,
   FaBuilding,
   FaUserGraduate,
-  FaExpand, 
-  FaHeart, 
+  FaExpand,
+  FaHeart,
   FaCamera,
   FaArrowRight
 } from 'react-icons/fa';
 
 // --- Mixed Playlist (Only New YouTube Video + MP4s) ---
 const CAMPUS_VIDEOS = [
-  { 
-    url: "https://youtu.be/6GQRb4fGvtk?si=YOUR_SI_CODE", 
+  {
+    url: "https://youtu.be/6GQRb4fGvtk?si=YOUR_SI_CODE",
     type: "youtube",
     duration: 180 // Duration in seconds (3 minutes for example - adjust based on actual video length)
   },
-  { 
-    url: "https://assets.mixkit.co/videos/preview/mixkit-business-people-meeting-in-a-modern-office-4919-large.mp4", 
+  {
+    url: "https://assets.mixkit.co/videos/preview/mixkit-business-people-meeting-in-a-modern-office-4919-large.mp4",
     type: "mp4",
     duration: 30 // Duration in seconds
   },
-  { 
-    url: "https://assets.mixkit.co/videos/preview/mixkit-students-walking-in-university-hallway-4796-large.mp4", 
+  {
+    url: "https://assets.mixkit.co/videos/preview/mixkit-students-walking-in-university-hallway-4796-large.mp4",
     type: "mp4",
     duration: 45 // Duration in seconds
   }
@@ -34,35 +34,35 @@ const CAMPUS_VIDEOS = [
 
 // --- Gallery Items with Indian Students in Classroom Settings ---
 const GALLERY_ITEMS = [
-  { 
+  {
     id: 1,
     src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80",
     category: "Classroom",
     title: "Indian Students Coding Session",
     size: "md:col-span-2 md:row-span-2" // Large Hero
   },
-  { 
+  {
     id: 2,
     src: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80",
     category: "Collaborative Learning",
     title: "Group Project Work",
     size: "md:col-span-1 md:row-span-1" // Standard
   },
-  { 
+  {
     id: 3,
     src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
     category: "Workshop",
     title: "Tech Workshop in Progress",
     size: "md:col-span-1 md:row-span-2" // Tall Portrait
   },
-  { 
+  {
     id: 4,
     src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
     category: "Hackathon",
     title: "24-Hour Coding Challenge",
     size: "md:col-span-1 md:row-span-1" // Standard
   },
-  { 
+  {
     id: 5,
     src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
     category: "Placement",
@@ -79,7 +79,7 @@ const getYouTubeID = (url: string) => {
 };
 
 export default function About() {
-  
+
   // --- Video State ---
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
@@ -109,7 +109,7 @@ export default function About() {
   // --- Handle Video End and Progress for MP4 ---
   useEffect(() => {
     const videoElement = videoRef.current;
-    
+
     const handleVideoEnd = () => {
       // Move to next video when current one ends
       setCurrentVideoIndex((prev) => (prev + 1) % CAMPUS_VIDEOS.length);
@@ -144,30 +144,30 @@ export default function About() {
     }
 
     const currentVideo = CAMPUS_VIDEOS[currentVideoIndex];
-    
+
     // For YouTube videos, we need to simulate progress and end
     if (currentVideo.type === 'youtube') {
       let elapsedSeconds = 0;
       const totalSeconds = currentVideo.duration;
-      
+
       const interval = setInterval(() => {
         elapsedSeconds += 1;
-        
+
         // Update progress
         const progress = (elapsedSeconds / totalSeconds) * 100;
         setVideoProgress(progress);
-        
+
         // Check if video should end
         if (elapsedSeconds >= totalSeconds) {
           clearInterval(interval);
           setCurrentVideoIndex((prev) => (prev + 1) % CAMPUS_VIDEOS.length);
         }
       }, 1000);
-      
+
       progressIntervalRef.current = interval;
     } else {
       // Reset progress for MP4 videos
-      
+
     }
 
     return () => {
@@ -192,9 +192,9 @@ export default function About() {
   // const togglePlay = () => {
   //   const newIsPlaying = !isPlaying;
   //   setIsPlaying(newIsPlaying);
-    
+
   //   const currentVideo = CAMPUS_VIDEOS[currentVideoIndex];
-    
+
   //   if (currentVideo.type === 'mp4' && videoRef.current) {
   //     if (newIsPlaying) {
   //       videoRef.current.play().catch(error => {
@@ -212,7 +212,7 @@ export default function About() {
 
   return (
     <div className="bg-slate-50 min-h-screen font-sans overflow-x-hidden selection:bg-[#f47529] selection:text-white">
-      
+
       {/* Global Styles for Animations */}
       <style>{`
         @keyframes fadeIn {
@@ -237,26 +237,26 @@ export default function About() {
               Who We Are
             </div>
             <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-[1.1] tracking-tight">
-              We Are <br/>
+              We Are <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f47529] to-[#ff9f5a]">Master Minds.</span>
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed max-w-lg font-medium">
               Master Mind Learning Solutions is built on the vision of transforming education through practical innovation. Our mission is to create a dynamic learning ecosystem where students gain technical expertise, industry exposure, and career guidance.
             </p>
             <div className="pl-6 border-l-4 border-[#f47529]">
-                <p className="text-xl text-slate-800 italic font-serif">
-                  "Stop studying, start engineering."
-                </p>
+              <p className="text-xl text-slate-800 italic font-serif">
+                "Stop studying, start engineering."
+              </p>
             </div>
           </div>
-          
+
           <div className="relative reveal opacity-0 translate-y-10 transition-all duration-1000 delay-200">
             <div className="absolute inset-0 bg-[#f47529] rounded-[3rem] rotate-6 opacity-10"></div>
             {/* Logo Image Added Here */}
             <div className="relative z-10 w-full rounded-[3rem] shadow-2xl transform hover:-rotate-2 transition-transform duration-500 overflow-hidden bg-white p-8 flex items-center justify-center">
-              <img 
-                src="/logo.png" 
-                alt="Master Mind Learning Solutions Logo" 
+              <img
+                src="/logo.png"
+                alt="Master Mind Learning Solutions Logo"
                 className="w-full max-w-[400px] h-auto object-contain"
               />
             </div>
@@ -278,10 +278,10 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: <FaBriefcase />, num: "94%", label: "Placement Rate", sub: "Avg time to hire: 45 days", color: "text-[#00bcf2]", bg: "bg-blue-500/10", border: "border-blue-500/20" },
-              { icon: <FaAward />, num: "12 LPA", label: "Highest Package", sub: "Average Package: 6 LPA", color: "text-[#f47529]", bg: "bg-orange-500/10", border: "border-orange-500/20" },
-              { icon: <FaBuilding />, num: "500+", label: "Hiring Partners", sub: "From Startups to MNCs", color: "text-[#00bcf2]", bg: "bg-blue-500/10", border: "border-blue-500/20" },
-              { icon: <FaUserGraduate />, num: "2500+", label: "Alumni Network", sub: "Working across 12 countries", color: "text-[#f47529]", bg: "bg-orange-500/10", border: "border-orange-500/20" }
+              { icon: <FaBriefcase />, num: "90%", label: "Placement Rate", sub: "Avg time to hire: 45 days", color: "text-[#00bcf2]", bg: "bg-blue-500/10", border: "border-blue-500/20" },
+              { icon: <FaAward />, num: "10 LPA", label: "Highest Package", sub: "Average Package: 6 LPA", color: "text-[#f47529]", bg: "bg-orange-500/10", border: "border-orange-500/20" },
+              { icon: <FaBuilding />, num: "400+", label: "Hiring Partners", sub: "From Startups to MNCs", color: "text-[#00bcf2]", bg: "bg-blue-500/10", border: "border-blue-500/20" },
+              { icon: <FaUserGraduate />, num: "1000+", label: "Alumni Network", sub: "Working across 12 countries", color: "text-[#f47529]", bg: "bg-orange-500/10", border: "border-orange-500/20" }
             ].map((stat, i) => (
               <div key={i} className={`relative group p-8 rounded-[2rem] border ${stat.border} bg-slate-800/40 backdrop-blur-sm hover:bg-slate-800/60 transition-all duration-300 hover:-translate-y-2`}>
                 <div className={`w-14 h-14 rounded-2xl ${stat.bg} ${stat.color} flex items-center justify-center text-2xl mb-6 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform`}>
@@ -306,11 +306,11 @@ export default function About() {
           <p className="text-slate-400 mb-12 max-w-2xl mx-auto">
             Experience a vibrant and inspiring learning environment where innovation meets collaboration. At Master Mind Learning Solutions, students engage in hands-on projects, technical workshops, group discussions, and mentorship sessions that shape both their skills and confidence.
 
-From interactive classrooms to career-focused events, life at Master Minds is designed to prepare you for real-world success.
+            From interactive classrooms to career-focused events, life at Master Minds is designed to prepare you for real-world success.
           </p>
 
           <div className="relative group rounded-[3rem] overflow-hidden shadow-2xl border-4 border-slate-800 bg-black aspect-video md:h-[500px]">
-            
+
             {/* Conditional Rendering: YouTube vs MP4 */}
             {youtubeID ? (
               <iframe
@@ -335,7 +335,7 @@ From interactive classrooms to career-focused events, life at Master Minds is de
 
             {/* Progress Bar */}
             <div className="absolute top-0 left-0 w-full h-1 bg-white/20 z-30">
-              <div 
+              <div
                 className="h-full bg-[#f47529] transition-all duration-300"
                 style={{ width: `${videoProgress}%` }}
               ></div>
@@ -386,7 +386,7 @@ From interactive classrooms to career-focused events, life at Master Minds is de
       {/* 4. GALLERY SECTION */}
       <section className="py-24 px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
-          
+
           {/* Section Header */}
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 reveal opacity-0 translate-y-10 transition-all duration-1000">
             <div className="max-w-xl">
@@ -399,24 +399,24 @@ From interactive classrooms to career-focused events, life at Master Minds is de
               </p>
             </div>
             <button className="hidden md:flex items-center gap-2 text-slate-600 font-bold hover:text-[#f47529] transition-colors mt-6 md:mt-0">
-              View All Photos <FaArrowRight className="text-sm"/>
+              View All Photos <FaArrowRight className="text-sm" />
             </button>
           </div>
 
           {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[250px] gap-6">
             {GALLERY_ITEMS.map((item, i) => (
-              <div 
-                key={item.id} 
+              <div
+                key={item.id}
                 className={`group relative rounded-[2rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 ${item.size} reveal opacity-0 translate-y-10`}
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
-                <img 
-                  src={item.src} 
-                  alt={item.title} 
+                <img
+                  src={item.src}
+                  alt={item.title}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
                 />
-                
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
 
                 <div className="absolute top-4 right-4 translate-y-[-20px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
@@ -446,9 +446,9 @@ From interactive classrooms to career-focused events, life at Master Minds is de
           </div>
 
           <div className="mt-8 text-center md:hidden">
-             <button className="px-8 py-3 bg-white border border-slate-200 text-slate-700 font-bold rounded-xl shadow-sm">
-                View All Photos
-             </button>
+            <button className="px-8 py-3 bg-white border border-slate-200 text-slate-700 font-bold rounded-xl shadow-sm">
+              View All Photos
+            </button>
           </div>
 
         </div>
